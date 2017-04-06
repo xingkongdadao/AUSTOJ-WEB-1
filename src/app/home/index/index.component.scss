@@ -1,0 +1,66 @@
+.index-one {
+  background: url("/src/assets/images/login-bg.jpg") no-repeat, repeat, left 0, left top;
+  background-size: cover;
+  position: relative;
+  max-width: 100vw;
+  min-height: 96vh;
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.index-one-img {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  margin-left: -559px;
+}
+.index-one .sign-form button {
+  background-color: #6FAF98;
+  color: #fff;
+  border: none;
+}
+.opacity-title{
+  opacity: .678;
+}
+#signup:hover{
+  background-color: #3d8156;
+}
+//第二屏
+.index-two {
+  background-color: #32383B;
+  padding-bottom: 10%;
+  padding-top: 10%;
+}
+
+.thumbnail {
+  padding: 0;
+}
+
+.thumbnail img {
+  width: 100%;
+}
+
+.thumbnail p {
+  width: 263px;
+  height: 110px;
+  margin: 0 auto;
+}
+//第三屏
+.index-three {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.index-three h5 {
+  margin-bottom: 8px;
+  margin-top: 16px;
+  font-weight: 600;
+  color: #32383B;
+}
+
+.index-three .list-view-item {
+  padding: 10px 10px;
+  text-align: left;
+}

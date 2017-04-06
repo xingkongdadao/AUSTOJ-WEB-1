@@ -1,0 +1,33 @@
+a{
+  color: #34495e;
+}
+a:hover{
+  color: #16a085;
+}
+.dropdown-menu {
+  min-width: 100%;
+  margin-top: -10px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.index-header .navbar-nav>li>a, .index-header .navbar-brand{
+  color: #ffffff;
+}
+.index-header .navbar-nav>li>a:hover,.index-header .navbar-brand:hover{
+  color: #16a085;
+}
+
+/*首页下拉变更背景*/
+.nav-backcolor {
+  background-color: #333445;
+  min-height: 50px;
+  height: 60px;
+  -webkit-transition: all 500ms ease-in;
+  transition: all 500ms ease-in;
+}
+.nav-backcolor .container a, .nav-backcolor .container li > a {
+  -webkit-transition: all 500ms ease-in;
+  transition: all 500ms ease-in;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}

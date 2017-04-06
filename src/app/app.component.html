@@ -1,0 +1,8 @@
+<div>
+  <!--头部-->
+  <app-header *ngIf="isShowHeaderAndFooter()"></app-header>
+  <!-- 主体内容区域 -->
+  <router-outlet></router-outlet>
+  <!--底部-->
+  <app-footer *ngIf="isShowHeaderAndFooter()"></app-footer>
+</div>
