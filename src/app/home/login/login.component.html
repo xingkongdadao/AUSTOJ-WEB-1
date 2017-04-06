@@ -1,7 +1,7 @@
 <div class="index-one">
   <!--小导航图标-->
   <div class="small-home">
-    <a class="text-center"><i class="fa fa-home"></i></a>
+    <a class="text-center" routerLink="/"><i class="fa fa-home fa-2x"></i></a>
   </div>
   <!--标题-->
   <div class="container-fluid text-center animated fadeInDown">
@@ -28,13 +28,13 @@
           <img  class="code-img">
         </div>
         <!--记住用户名-->
-        <label class="checkbox" for="remmberMe">
-          <input type="checkbox" data-toggle="checkbox" id="remmberMe" class="custom-checkbox" name="rmb_me" value="1">
+        <label class="checkbox">
+          <input type="checkbox"  value="1">
           Remember me
         </label>
         <!--提交-->
         <div class="input-group">
-          <a href="register.html" class="btn btn-primary">Register</a>&nbsp;&nbsp;
+          <a routerLink="/register" class="btn btn-primary">Register</a>&nbsp;&nbsp;
           <button type="button" class="btn btn-primary sign-in" >Sign in</button>
         </div>
       </form>

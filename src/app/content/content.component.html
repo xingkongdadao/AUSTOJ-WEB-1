@@ -1,0 +1,26 @@
+<!--通知栏组件-->
+<app-tips></app-tips>
+
+<div class="base-page">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-9">
+        <!--主面板-->
+        <section class="animated fadeIn">
+          <router-outlet></router-outlet>
+        </section>
+      </div>
+      <!--侧边栏-->
+      <div class="col-md-3 widget animated fadeInRight">
+        <!--用户模块-->
+        <app-user-aside></app-user-aside>
+        <!--题目分类模块-->
+        <app-catelog-aside></app-catelog-aside>
+        <!--标签模块-->
+        <app-tags-aside></app-tags-aside>
+        <!--文章模块-->
+        <app-article-aside></app-article-aside>
+      </div>
+    </div>
+  </div>
+</div>

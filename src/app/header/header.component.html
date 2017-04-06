@@ -1,9 +1,9 @@
-<header [ngClass]="{'navbar-fixed-top index-header': getIsIndex()}">
+<header [ngClass]="{'navbar-fixed-top index-header': getIsIndex(),'wight-backcolor':!getIsIndex()}">
   <div class="navbar navbar-lg" role="navigation" [ngClass]="{'nav-backcolor': isBackColor}">
     <div class="container">
 
       <div class="navbar-title">
-        <a class="navbar-brand" href="index" routerLink="/">AUST</a>
+        <a class="navbar-brand" routerLink="/">AUST</a>
       </div>
 
       <div class="navbar-collapse collapse">

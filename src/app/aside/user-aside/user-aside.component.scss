@@ -1,0 +1,36 @@
+.person {
+  position: relative;
+  border-bottom: 1px dashed gray;
+}
+
+.person img {
+  height: 135px;
+  width: 135px;
+  max-width: 90%;
+}
+.person a{
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.user-name a {
+  padding: 5px 30px;
+  color: #34495e;
+  font-weight: 700;
+}
+.user-name a:hover {
+  color: #1abc9c;
+}
+
+.tagcloud > a {
+  border: 1px solid #E8E2D2;
+  padding: 3px 7px;
+  border-radius: 3px;
+  float: left;
+  margin: 3px 3px;
+}
+
+.tagcloud > a:hover {
+  background-color: #EAE8DF;
+  color: black;
+}

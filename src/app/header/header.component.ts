@@ -18,18 +18,24 @@ export class HeaderComponent implements OnInit {
     this.isAddBackColor();
   }
 
-  //判断是否为首页
+  /**
+   * 判断是否为首页
+   * @returns {boolean}
+   */
   getIsIndex(){
     return this.router.url === "/"
   }
 
-  //判断是否需要加背景色
+  /**
+   * 判断是否需要加背景色
+   * 使用isBackColor控制结果
+   */
   isAddBackColor(){
     if (this.getIsIndex()){
       //监听事件这样添加才有效果
       window.addEventListener('scroll',() => {
         let marginTop = document.body.scrollTop|| document.documentElement.scrollTop;
-        this.isBackColor = marginTop > 20;
+        this.isBackColor = marginTop > 20 && this.getIsIndex();
       });
     }
   }

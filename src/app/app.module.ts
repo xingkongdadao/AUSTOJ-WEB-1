@@ -10,9 +10,10 @@ import { BsDropdownModule } from 'ng2-bootstrap';
 import { TooltipModule } from 'ng2-bootstrap';
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "./app.route";
-import { ScrollCheckDirective } from './directive/scroll-check.directive';
 import {IndexComponent} from "./home/index/index.component";
 import {LoginComponent} from "./home/login/login.component";
+import { RegisterComponent } from './home/register/register.component';
+import { ContentAndAsideComponent } from './content/content.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import {LoginComponent} from "./home/login/login.component";
     FooterComponent,
     IndexComponent,
     LoginComponent,
-    ScrollCheckDirective
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
