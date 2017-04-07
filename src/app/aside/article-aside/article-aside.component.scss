@@ -1,0 +1,19 @@
+.article li {
+  font-size: 15px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  line-height: 20px;
+  border-bottom: 1px dashed #E8E3D4;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+li i,li a{
+  display: inline-block;
+  max-width: 270px;
+}
+
+a:hover{
+  cursor: pointer;
+}

@@ -1,0 +1,13 @@
+.tagcloud > a {
+  border: 1px solid #E8E2D2;
+  padding: 3px 7px;
+  border-radius: 3px;
+  float: left;
+  margin: 3px 3px;
+}
+.tagcloud > a:hover {
+  background-color: #EAE8DF;
+  color: black;
+  cursor: pointer;
+}
+

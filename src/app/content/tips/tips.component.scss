@@ -14,3 +14,58 @@
   left: 34px;
   top: 6px;
 }
+// 轮播动画
+@-webkit-keyframes marquee {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  27% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  33% {
+    -webkit-transform: translate3d(0, -100%, 0);
+  }
+  60% {
+    -webkit-transform: translate3d(0, -100%, 0);
+  }
+  67% {
+    -webkit-transform: translate3d(0, -200%, 0);
+  }
+  94% {
+    -webkit-transform: translate3d(0, -200%, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, -300%, 0);
+  }
+}
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  /* 100/3 * (2s/2.5s) => 26.7% => 27% */
+  27% {
+    transform: translate3d(0, 0, 0);
+  }
+  /* 100/3 =>33.3 => 33% */
+  33% {
+    transform: translate3d(0, -100%, 0);
+  }
+  60% {
+    transform: translate3d(0, -100%, 0);
+  }
+  67% {
+    transform: translate3d(0, -200%, 0);
+  }
+  94% {
+    transform: translate3d(0, -200%, 0);
+  }
+  100% {
+    transform: translate3d(0, -300%, 0);
+  }
+}
+
+.container-css {
+  height: 22px;
+  -webkit-animation: marquee 10.5s linear infinite;/* 2.5s(2s + 0.5s) * 3 => 7.5s */
+  animation: marquee 10.5s linear infinite;
+}
