@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import "/node_modules/ng2-toastr/bundles/ng2-toastr.min.css";
+
 /*common start*/
 html {
   -ms-text-size-adjust: 100%;
@@ -120,3 +122,4 @@ td {
   padding-left: 10px;
 
 }
+

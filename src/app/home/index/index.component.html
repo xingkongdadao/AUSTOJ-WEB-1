@@ -1,7 +1,7 @@
 <div class="index-one text-center">
   <div class="row animated fadeInDown margin-header-top">
     <div class="col-md-12">
-      <h2 >这是一个ACM入门平台</h2>
+      <h2>这是一个ACM入门平台</h2>
       <br/>
       <h4 class="opacity-title">
         这里给你提供入门指导和训练,相信在这个平台下你会找到自己的方向</h4>
@@ -17,7 +17,7 @@
             <input type="text" class="form-control" placeholder="Email Address"
                    required name="email">
             <span class="input-group-btn">
-                  <button class="btn" type="submit" id="signup">Sign Me Up!</button>
+                  <button class="btn" type="button" id="signup">Sign Me Up!</button>
                 </span>
           </div>
         </div>
@@ -88,38 +88,18 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="col-md-5">
-        <div class="list-view-item">
-          <img src="assets/images/default-avatar.jpg" class="img-circle" width="55px" height="55px" style="max-width: 100%">
-          <h5>张三</h5>
-          <p>蓝桥杯大赛国家级一等奖</p>
-        </div>
-        <div class="list-view-item">
-          <img src="assets/images/default-avatar.jpg" class="img-circle" width="55px" height="55px" style="max-width: 100%">
-          <h5>张三</h5>
-          <p>蓝桥杯大赛国家级一等奖</p>
-        </div>
-        <div class="list-view-item">
-          <img src="assets/images/default-avatar.jpg" class="img-circle" width="55px" height="55px" style="max-width: 100%">
-          <h5>张三</h5>
-          <p>蓝桥杯大赛国家级一等奖</p>
+        <div class="list-view-item" *ngFor="let item of indexUpUsers" >
+          <img src="{{item.avatar}}" class="img-circle" width="55px" height="55px" style="max-width: 100%">
+          <h5>{{item.nickname}}</h5>
+          <p>{{item.honor}}</p>
         </div>
       </div>
       <div class="col-md-2"></div>
       <div class="col-md-5">
-        <div class="list-view-item">
-          <img src="assets/images/default-avatar.jpg" class="img-circle" width="55px" height="55px" style="max-width: 100%">
-          <h5>张三</h5>
-          <p>蓝桥杯大赛国家级一等奖</p>
-        </div>
-        <div class="list-view-item">
-          <img src="assets/images/default-avatar.jpg" class="img-circle" width="55px" height="55px" style="max-width: 100%">
-          <h5>张三</h5>
-          <p>蓝桥杯大赛国家级一等奖</p>
-        </div>
-        <div class="list-view-item">
-          <img src="assets/images/default-avatar.jpg" class="img-circle" width="55px" height="55px" style="max-width: 100%">
-          <h5>张三</h5>
-          <p>蓝桥杯大赛国家级一等奖</p>
+        <div class="list-view-item" *ngFor="let item of indexDownUsers" >
+          <img src="{{item.avatar}}" class="img-circle" width="55px" height="55px" style="max-width: 100%">
+          <h5>{{item.nickname}}</h5>
+          <p>{{item.honor}}</p>
         </div>
       </div>
     </div>

@@ -6,36 +6,36 @@
   <!--标题-->
   <div class="container-fluid text-center animated fadeInDown">
     <h1 class="login-logo">AUST</h1>
-    <h6 class="text-danger" v-text="err_msg"></h6>
+    <h6 class="text-danger">{{postError}}</h6>
   </div>
   <!--登录表单-->
   <div class="row animated fadeInUp">
     <div class="login-field">
-      <form role="form"  method="post" action="login" id="loginForm">
+      <form role="form"  [formGroup]="userForm" (ngsubmit)="doLogin()">
         <!--邮箱-->
-        <div class="input-group form-group">
+        <div class="input-group form-group" [ngClass]="{'has-error': formErrors.email}">
           <span class="input-group-addon"><i class="fa fa-user"></i></span>
-          <input type="text" class="form-control" placeholder="Email" id="email" required name="email">
+          <input type="text" formControlName="email" class="form-control" placeholder="Email">
         </div>
         <!--密码-->
-        <div class="input-group form-group" >
+        <div class="input-group form-group" [ngClass]="{'has-error': formErrors.Password}">
           <span class="input-group-addon"><i class="fa fa-key"></i></span>
-          <input type="password" class="form-control" placeholder="Password" required name="password">
+          <input formControlName="Password" type="password" class="form-control" placeholder="Password">
         </div>
         <!--验证码-->
         <div class="msg-inline">
-          <input type="text" class="form-control code-input" required name="codevalidate">
-          <img  class="code-img">
+          <input formControlName="vcode" type="text" class="form-control code-input">
+          <img  class="code-img" [src]="codeImgUrl" (click)="changeCode()">
         </div>
         <!--记住用户名-->
         <label class="checkbox">
-          <input type="checkbox"  value="1">
+          <input formControlName="remberMe" type="checkbox"  value="1">
           Remember me
         </label>
         <!--提交-->
         <div class="input-group">
           <a routerLink="/register" class="btn btn-primary">Register</a>&nbsp;&nbsp;
-          <button type="button" class="btn btn-primary sign-in" >Sign in</button>
+          <button [disabled]="userForm.invalid" type="button" class="btn btn-primary sign-in" >Sign in</button>
         </div>
       </form>
     </div>

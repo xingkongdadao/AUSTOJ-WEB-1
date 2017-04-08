@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {AppComponent} from "./app.component";
 import {HeaderComponent} from "./header/header.component";
@@ -13,7 +13,10 @@ import {appRoutes} from "./app.route";
 import {IndexComponent} from "./home/index/index.component";
 import {LoginComponent} from "./home/login/login.component";
 import { RegisterComponent } from './home/register/register.component';
-import { ContentAndAsideComponent } from './content/content.component';
+import 'rxjs/add/operator/toPromise';
+import {UserService} from "./service/user.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastModule} from "ng2-toastr/ng2-toastr";
 
 @NgModule({
   declarations: [
@@ -28,12 +31,15 @@ import { ContentAndAsideComponent } from './content/content.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),//路由
     //bootstrap
     BsDropdownModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    ToastModule.forRoot()
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

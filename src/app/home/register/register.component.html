@@ -7,45 +7,46 @@
   <!--标题-->
   <div class="container-fluid text-center animated fadeInDown">
     <h1 class="login-logo">AUST</h1>
-    <h6 class="text-danger"></h6>
+    <h6 class="text-danger">{{postError}}</h6>
   </div>
   <!--input框-->
   <div class="row animated fadeInUp">
     <div class="login-field">
-      <form role="form" style="margin-top: 20px" method="post" id="registerForm" action="register">
+      <form role="form" [formGroup]="userForm" (ngSubmit)="doRegister()" novalidate>
         <!--昵称-->
-        <div class="input-group form-group">
+        <div class="input-group form-group" [ngClass]="{'has-error': formErrors.nickName}">
           <span class="input-group-addon"><i class="fa fa-user"></i></span>
-          <input type="text" class="form-control"
-                 placeholder="昵称" name="nickname">
+          <input formControlName="nickName"  type="text" class="form-control"
+                 placeholder="昵称">
         </div>
         <!--邮箱-->
-        <div class="input-group form-group" >
+        <div class="input-group form-group" [ngClass]="{'has-error': formErrors.email}">
           <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-          <input type="email" class="form-control" id="email"
-                 placeholder="example@XX.com" name="email" required >
+          <input formControlName="email" type="email" class="form-control"
+                 placeholder="example@XX.com" (blur)="checkRepeatEmail()" >
         </div>
         <!--密码-->
-        <div class="input-group form-group" >
+        <div class="input-group form-group" [ngClass]="{'has-error': formErrors.password}">
           <span class="input-group-addon"><i class="fa fa-key"></i></span>
-          <input type="password" class="form-control"
-                 placeholder="Password" required name="password" >
+          <input formControlName="Password" type="password" class="form-control"
+                 placeholder="Password" >
         </div>
         <!--确认密码-->
-        <div class="input-group form-group">
+        <div class="input-group form-group" [ngClass]="{'has-error': formErrors.confirmPassword}">
           <span class="input-group-addon"><i class="fa fa-key"></i></span>
-          <input type="password" class="form-control"
-                 placeholder="Password" required name="password2">
+          <input formControlName="confirmPassword" type="password" class="form-control"
+                 placeholder="confirmPassword">
         </div>
         <!--验证码-->
         <div class="code-inline">
-          <input type="text" class="form-control code-input" required name="codevalidate">
-          <img id="code-validate"  class="code-img">
+          <input formControlName="vcode" type="text" class="form-control code-input"
+                 [ngClass]="{'has-error': formErrors.vcode}">
+          <img id="code-validate" [src]="codeImgUrl"  class="code-img" (click)="changeCode()">
         </div>
         <!--提交按钮-->
         <div class="input-group">
           <a routerLink="/login"  class="btn btn-primary">Sign in</a>&nbsp;&nbsp;
-          <button type="button" class="btn btn-primary sign-in">Register</button>
+          <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary sign-in">Register</button>
         </div>
       </form>
 

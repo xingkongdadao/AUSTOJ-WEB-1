@@ -13,7 +13,10 @@ export class LogService {
     }
   }
 
-  static error(msg: any){
+  static errorMsg(msg: any){
     console.error(msg)
+  }
+  static error(msg: any,error: any){
+    console.error(msg,error)
   }
 }
