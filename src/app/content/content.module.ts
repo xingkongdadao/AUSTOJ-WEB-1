@@ -10,6 +10,8 @@ import {UserAsideComponent} from "../aside/user-aside/user-aside.component";
 import {ContentAndAsideComponent} from "./content.component";
 import {StartComponent} from "./start/start.component";
 import {TooltipModule} from "ng2-bootstrap";
+import {UserService} from "../service/user.service";
+import {ArticleService} from "../service/article.service";
 
 @NgModule({
   imports: [
@@ -23,6 +25,7 @@ import {TooltipModule} from "ng2-bootstrap";
     TipsComponent, ArticleAsideComponent,
     TagsAsideComponent, CatelogAsideComponent,
     UserAsideComponent,StartComponent
-  ]
+  ],
+  providers:[UserService,ArticleService]
 })
 export class ContentAndAsideModule { }

@@ -3,14 +3,58 @@ import {UserModel} from "../model/user-model";
 import {Headers, Http, URLSearchParams} from "@angular/http";
 import {LogService} from "./log.service";
 import {Config} from "../model/config";
+import {UserInfoModel} from "../model/user-info-model";
 
 @Injectable()
 export class UserService implements OnInit{
+
+  currentUser: UserInfoModel;
 
   constructor(private http: Http) { }
 
   ngOnInit(): void {
 
+  }
+
+  /**
+   * 得到当前用户
+   * @returns {UserInfoModel}
+   */
+  getCurrentUser(){
+    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    return this.currentUser;
+  }
+
+  /**
+   * 刷新当前用户的基本信息
+   * @param userId 用户id
+   */
+  freshCurrentUser(userId: number, isNew: boolean): UserInfoModel{
+    LogService.debug("freshCurrentUser id"+userId);
+    if (isNew || this.currentUser == null){
+      this.fetchUserInfo(userId)
+        .then(x => {
+          if (x.status == 0){
+            this.currentUser = x.data as UserInfoModel;
+            window.localStorage.setItem("currentUser",JSON.stringify(this.currentUser));
+            return this.currentUser;
+          }
+        });
+    }
+    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    return this.currentUser;
+  }
+
+  /**
+   * 获取用户的基本信息
+   * @param userId 用户id
+   * @returns {Promise<any>}
+   */
+  fetchUserInfo(userId: number): Promise<any>{
+    LogService.debug("fetchUserInfo id"+userId);
+    return this.http.get(Config.url_userInfo+userId).toPromise()
+      .then(response => response.json())
+      .catch(LogService.handleError);
   }
 
   /**
@@ -26,7 +70,7 @@ export class UserService implements OnInit{
     urlParams.set('codevalidate',userinfo.vcode);
     return this.http.post(Config.url_login,urlParams).toPromise()
       .then(response => response.json())
-      .catch(this.handleError);
+      .catch(LogService.handleError);
   }
 
   /**
@@ -42,7 +86,7 @@ export class UserService implements OnInit{
     urlParams.set('codevalidate',userinfo.vcode);
     return this.http.post(Config.url_register,urlParams).toPromise()
       .then(response => response.json())
-      .catch(this.handleError);
+      .catch(LogService.handleError);
   }
 
   /**
@@ -52,7 +96,7 @@ export class UserService implements OnInit{
   fetchIndexUsers(): Promise<any>{
     return this.http.get(Config.url_indexUsers).toPromise()
       .then(response => response.json())
-      .catch(this.handleError);
+      .catch(LogService.handleError);
   }
 
   /**
@@ -66,17 +110,7 @@ export class UserService implements OnInit{
     LogService.debug('checkRepeatEmail params:'+params);
     return this.http.get(Config.url_checkEmail,{params:params}).toPromise()
       .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  /**
-   * 处理请求中的错误
-   * @param error 错误
-   * @returns {Promise<never>}
-   */
-  private handleError(error: any): Promise<any> {
-    LogService.error('fetch user error',error);
-    return Promise.reject(error.message || error);
+      .catch(LogService.handleError);
   }
 
 }

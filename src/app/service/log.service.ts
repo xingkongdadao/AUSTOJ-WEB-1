@@ -19,4 +19,14 @@ export class LogService {
   static error(msg: any,error: any){
     console.error(msg,error)
   }
+
+  /**
+   * 处理请求中的错误
+   * @param error 错误
+   * @returns {Promise<never>}
+   */
+  static handleError(error: any): Promise<any> {
+    LogService.error('fetch user error',error);
+    return Promise.reject(error.message || error);
+  }
 }

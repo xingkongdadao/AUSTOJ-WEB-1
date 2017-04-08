@@ -8,7 +8,7 @@
 
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="start" >起步</a></li>
+          <li><a routerLink="start" >起步</a></li>
           <li><a href="practice">训练</a></li>
           <li><a href="master" >进阶</a></li>
           <li><a href="contest" >比赛</a></li>
@@ -28,9 +28,14 @@
             </ul>
           </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right" >
-          <li><a href="login" routerLink="login" >登 录</a></li>
+        <ul class="nav navbar-nav navbar-right" *ngIf="!currentUser">
+          <li><a  routerLink="login" >登 录</a></li>
           <li><a href="register">注 册</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" *ngIf="currentUser">
+          <!--todo 用户个人中心链接要替换-->
+          <li><a *ngIf="currentUser" routerLink="login" >{{currentUser.nickname}}</a></li>
+          <li><a (click)="loginOut()">退出</a></li>
         </ul>
       </div><!--/.nav-collapse -->
 

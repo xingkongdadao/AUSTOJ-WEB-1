@@ -5,6 +5,7 @@ import {UserModel} from "../../model/user-model";
 import {Config} from "../../model/config";
 import {Toast, ToastsManager} from "ng2-toastr";
 import {Router} from "@angular/router";
+import {LogService} from "../../service/log.service";
 
 @Component({
   selector: 'app-login',
@@ -31,13 +32,12 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(){
-    if (this.userForm.invalid){
+    if (this.userForm.valid){
       this.userInfo = this.userForm.value;
       this.userService.login(this.userInfo)
         .then(x => {
           if (x.status == 0){
             this.postError = '';
-            //异步获取用户的信息存储在localStorge
             this.toastr.success("登录成功,即将后跳转到登录页",'SUCCESS',{positionClass:'toast-top-center',dismiss: 'controlled'})
               .then((toast: Toast) => {
                 setTimeout(() => {
@@ -46,11 +46,16 @@ export class LoginComponent implements OnInit {
                   this.router.navigateByUrl('/')
                 }, 3000)
               });
+            //刷新当前用户信息
+            this.userService.freshCurrentUser(x.data.id,true);
           }else {
             this.postError = x.msg;
-            this.toastr.error(this.postError)
+            this.toastr.error(this.postError);
+            this.changeCode();
           }
         })
+    } else {
+      this.toastr.warning("信息有误,请纠正后再登录")
     }
   }
 

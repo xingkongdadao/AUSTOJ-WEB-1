@@ -1,18 +1,22 @@
 <aside>
   <h5><span>个人中心</span></h5>
-  <p class="text-center preson" *ngIf="false">
-    <a href="../login.html" >登录</a>
-    <a href="../register.html" >注册</a>
+  <p class="text-center preson" *ngIf="!currentUser">
+    <a routerLink="/login" >登录</a>
+    <a routerLink="/register" >注册</a>
   </p>
+  <div *ngIf="currentUser">
     <div class="text-center person">
+      <!--todo 用户个人中心-->
       <a href="/user/1">
-        <img src="/assets/images/default-avatar.jpg" tooltip="change your avatar" placement="bottom" container="body">
+        <img [src]="currentUser.avatar" tooltip="change your avatar" placement="bottom" container="body">
       </a>
-      <a href="/user/1" class="center-block user-name" >nl101531</a>
+      <a href="/user/1" class="center-block user-name" >{{currentUser.nickname}}</a>
     </div>
-    <p>格言:<br><span>书山有路勤无用,学海无涯钱做主</span></p>
-    <p class="tagcloud">近期AC:<br>
-      <a href="#" style="font-size: 12px;">1000</a>
+    <p>格言:<br><span>{{currentUser.motto}}</span></p>
+    <p class="tagcloud" *ngIf="currentUser.ACRecents" >近期AC:<br>
+      <!--todo 题目链接-->
+      <a href="#" style="font-size: 12px;" *ngFor="let item of currentUser.ACRecents">{{item}}</a>
     </p>
+  </div>
 
 </aside>

@@ -1,24 +1,10 @@
 <aside>
   <h5><span>近期文章</span></h5>
   <ul class="list-unstyled article">
-    <li>
+    <li *ngFor="let item of articlesAside">
       <i class="fa fa-file-text-o">
-        <a  target="_blank" >redis学习记录(四)-SpringDataRedis分析</a>
-      </i>
-    </li>
-    <li>
-      <i class="fa fa-file-text-o">
-        <a  target="_blank" >redis学习记录(四)-SpringDataRedis分析SpringDataRedis分析</a>
-      </i>
-    </li>
-    <li>
-      <i class="fa fa-file-text-o">
-        <a  target="_blank" >redis学习记录(四)-SpringDataRedis分析</a>
-      </i>
-    </li>
-    <li>
-      <i class="fa fa-file-text-o">
-        <a  target="_blank" >redis学习记录(四)-SpringDataRedis分析</a>
+        <!--todo 文章链接-->
+        <a target="_blank">{{item.title}}</a>
       </i>
     </li>
   </ul>

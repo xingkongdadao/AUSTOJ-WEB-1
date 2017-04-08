@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {UserInfoModel} from "../model/user-info-model";
+import {UserService} from "../service/user.service";
 
 @Component({
   selector: 'app-header',
@@ -9,13 +11,25 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
 
   isBackColor: boolean = false;
+  currentUser: UserInfoModel;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private userService: UserService) {
 
   }
 
   ngOnInit() {
     this.isAddBackColor();
+    //绑定用户到一起
+    this.currentUser = this.userService.getCurrentUser();
+  }
+
+  /**
+   * 用户退出
+   */
+  loginOut(){
+    localStorage.removeItem("currentUser");
+    //刷新本页面
+    window.location.reload();
   }
 
   /**

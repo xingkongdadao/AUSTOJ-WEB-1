@@ -8,7 +8,7 @@ export const childRouter : Routes = [
     path: '',
     component:ContentAndAsideComponent,
     children:[
-      {path:'',redirectTo:'start',pathMatch:'full'},
+      {path:'',redirectTo:'/start',pathMatch:'full'},
       {path:'start',component:StartComponent}
     ]
   }

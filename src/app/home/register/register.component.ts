@@ -59,6 +59,7 @@ export class RegisterComponent implements OnInit {
           } else {
             this.postError = x.msg;
             this.toastr.error(x.msg);
+            this.changeCode();
           }
         })
     }else {

@@ -3,6 +3,7 @@ import {UserModel} from "../../model/user-model";
 import {UserService} from "../../service/user.service";
 import {ToastsManager} from ".1.6.0@ng2-toastr";
 import {LogService} from "../../service/log.service";
+import {UserInfoModel} from "../../model/user-info-model";
 
 @Component({
   selector: 'app-index',
