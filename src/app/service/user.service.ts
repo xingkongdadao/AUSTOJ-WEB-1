@@ -1,6 +1,6 @@
 import {Injectable, OnInit} from '@angular/core';
 import {UserModel} from "../model/user-model";
-import {Headers, Http, URLSearchParams} from "@angular/http";
+import {Http, URLSearchParams} from "@angular/http";
 import {LogService} from "./log.service";
 import {Config} from "../model/config";
 import {UserInfoModel} from "../model/user-info-model";

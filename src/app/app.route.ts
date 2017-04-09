@@ -2,6 +2,7 @@ import { Routes} from "@angular/router";
 import {IndexComponent} from "./home/index/index.component";
 import {LoginComponent} from "./home/login/login.component";
 import {RegisterComponent} from "./home/register/register.component";
+import {EmailCheckComponent} from "./home/email-check/email-check.component";
 
 
 export const appRoutes: Routes = [
@@ -9,6 +10,10 @@ export const appRoutes: Routes = [
     path:'',
     component: IndexComponent,
     pathMatch:'full'
+  },
+  {
+    path:'index',
+    component: IndexComponent,
   },
   {
     path:'login',
@@ -19,7 +24,7 @@ export const appRoutes: Routes = [
     component:RegisterComponent
   },
   {
-    path:'start',
+    path:'aust',
     loadChildren:'./content/content.module#ContentAndAsideModule'
   },
   {

@@ -17,6 +17,9 @@ import 'rxjs/add/operator/toPromise';
 import {UserService} from "./service/user.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastModule} from "ng2-toastr/ng2-toastr";
+import { EmailCheckComponent } from './home/email-check/email-check.component';
+import { ErrorComponent } from './home/error/error.component';
+import {ArticleService} from "./service/article.service";
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import {ToastModule} from "ng2-toastr/ng2-toastr";
     IndexComponent,
     LoginComponent,
     RegisterComponent,
+    EmailCheckComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,7 @@ import {ToastModule} from "ng2-toastr/ng2-toastr";
     TooltipModule.forRoot(),
     ToastModule.forRoot()
   ],
-  providers: [UserService],
+  providers: [UserService,ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

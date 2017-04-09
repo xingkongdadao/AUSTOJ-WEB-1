@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
    * @returns {boolean}
    */
   getIsIndex(){
-    return this.router.url === "/"
+    return this.router.url === "/" || this.router.url === "/index"
   }
 
   /**

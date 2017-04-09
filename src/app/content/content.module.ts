@@ -9,15 +9,18 @@ import {CatelogAsideComponent} from "../aside/catelog-aside/catelog-aside.compon
 import {UserAsideComponent} from "../aside/user-aside/user-aside.component";
 import {ContentAndAsideComponent} from "./content.component";
 import {StartComponent} from "./start/start.component";
-import {TooltipModule} from "ng2-bootstrap";
+import {PaginationModule, TooltipModule} from "ng2-bootstrap";
 import {UserService} from "../service/user.service";
 import {ArticleService} from "../service/article.service";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(childRouter),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    PaginationModule.forRoot(),
+    FormsModule
   ],
   declarations: [
     //该模块的入口,因此一定要包含进来

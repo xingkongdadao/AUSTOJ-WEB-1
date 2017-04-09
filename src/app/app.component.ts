@@ -19,7 +19,8 @@ export class AppComponent implements OnInit{
   //判断是否显示头部和尾部
   isShowHeaderAndFooter(): boolean{
     let url = this.router.url;
-    if (url.indexOf('login')>0 || url.indexOf('register')>0 ){
+    if (url.includes('login') || url.includes('register')
+      || url.includes('emailcheck') || url.includes('error')){
       return false;
     }
     return true;

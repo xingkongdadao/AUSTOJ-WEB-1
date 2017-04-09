@@ -59,13 +59,37 @@ th {
 td {
   padding: 3px 7px;
 }
-/*common end*/
+/*class common*/
 
 .margin-header-top {
   padding-top: 10%;
   color: #fff;
 }
+.active{
+  color: #1abc9c;
+}
+.pagination-sm{
+  margin-top: -5px;
+  float: right;
+}
+.pagination li.disabled>a, .pagination li.disabled>span{
+  color: black;
+}
+.pagination-sm li a{
+  background-color: #34495e;
+  height: 80%;
+}
+.search{
+  margin-bottom: 8px;
+  margin-right: 3px;
+}
+button[name='refresh'] {
+  background-color: #34495e;
+}
 
+button[name='refresh']:hover, button[name='refresh']:focus {
+  background-color: #1abc9c;
+}
 /*aside*/
 .widget aside{
   background: #F7F6F1;

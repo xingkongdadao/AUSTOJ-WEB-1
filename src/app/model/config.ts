@@ -55,4 +55,9 @@ export class Config {
    * @type {string}
    */
   static url_article_aside: string = Config.baseUrl+'/articles/aside';
+  /**
+   * 获取某一阶段的题目
+   * @type {string}
+   */
+  static url_problem_stage: string = Config.baseUrl+'/problem//stage/';
 }
