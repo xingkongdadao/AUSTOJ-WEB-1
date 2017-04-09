@@ -6,7 +6,7 @@ import {LogService} from "./log.service";
 @Injectable()
 export class ProblemService {
 
-  constructor(private http: Http) {
+  constructor(private http: Http,) {
   }
 
   /**

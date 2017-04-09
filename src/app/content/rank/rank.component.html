@@ -1,0 +1,39 @@
+<strong>&nbsp;&nbsp;须知:</strong><br/>
+<p class="page-text">
+  为了减轻服务器压力,排名设置每两小时刷新一次
+</p>
+<h4 class="text-center">Rank</h4>
+<table class="table table-bordered table-striped text-center" width="80%">
+  <thead>
+  <tr>
+    <th class="col-xs-1">RankID</th>
+    <th class="col-xs-3">昵称</th>
+    <th class="col-xs-1">AC</th>
+    <th class="col-xs-1">Submit</th>
+    <th class="col-xs-1">Ratio</th>
+    <th class="col-xs-1">个人站点</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="text-center" *ngIf="!userRanks">
+    <td colspan="100%">加载中......</td>
+  </tr>
+  <tr class="text-center" *ngIf="userRanks && userRanks.length == 0">
+    <td colspan="100%">无更多的数据......</td>
+  </tr>
+  <!--<tr class="text-center">-->
+    <!--<td class="col-xs-1">RankID</td>-->
+    <!--<td class="col-xs-3">昵称</td>-->
+    <!--<td class="col-xs-1">AC</td>-->
+    <!--<td class="col-xs-1">Submit</td>-->
+    <!--<td class="col-xs-1">Ratio</td>-->
+    <!--<td class="col-xs-1">个人站点</td>-->
+  <!--</tr>-->
+  </tbody>
+</table>
+<!--一页显示20条-->
+<div *ngIf="totalItems > 20">
+  <pagination [boundaryLinks]="false" [totalItems]="totalItems" [(ngModel)]="currentPage"
+              (pageChanged)="pageChanged($event)" [itemsPerPage]="20" class="pagination-sm"
+              previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+</div>

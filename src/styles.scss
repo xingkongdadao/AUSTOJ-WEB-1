@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import "/node_modules/ng2-toastr/bundles/ng2-toastr.min.css";
 
-/*common start*/
+/*common problem-table*/
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -90,6 +90,10 @@ button[name='refresh'] {
 button[name='refresh']:hover, button[name='refresh']:focus {
   background-color: #1abc9c;
 }
+.page-text{
+  text-indent: 2em;
+}
+
 /*aside*/
 .widget aside{
   background: #F7F6F1;

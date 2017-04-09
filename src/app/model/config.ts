@@ -59,5 +59,5 @@ export class Config {
    * 获取某一阶段的题目
    * @type {string}
    */
-  static url_problem_stage: string = Config.baseUrl+'/problem//stage/';
+  static url_problem_stage: string = Config.baseUrl+'/problem-table//stage/';
 }

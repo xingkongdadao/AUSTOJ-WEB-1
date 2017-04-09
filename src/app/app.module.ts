@@ -20,6 +20,7 @@ import {ToastModule} from "ng2-toastr/ng2-toastr";
 import { EmailCheckComponent } from './home/email-check/email-check.component';
 import { ErrorComponent } from './home/error/error.component';
 import {ArticleService} from "./service/article.service";
+import {ProblemService} from "./service/problem.service";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import {ArticleService} from "./service/article.service";
     TooltipModule.forRoot(),
     ToastModule.forRoot()
   ],
-  providers: [UserService,ArticleService],
+  providers: [UserService,ArticleService,ProblemService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

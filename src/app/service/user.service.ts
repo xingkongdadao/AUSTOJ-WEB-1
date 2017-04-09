@@ -1,6 +1,6 @@
 import {Injectable, OnInit} from '@angular/core';
 import {UserModel} from "../model/user-model";
-import {Http, URLSearchParams} from "@angular/http";
+import {Http,URLSearchParams} from "@angular/http";
 import {LogService} from "./log.service";
 import {Config} from "../model/config";
 import {UserInfoModel} from "../model/user-info-model";
@@ -106,7 +106,8 @@ export class UserService implements OnInit{
    */
   checkRepeatEmail(email: string): Promise<any>{
     //浏览器兼容问题,需要tostring转换下
-    let params = {'email':email};
+    let params = new URLSearchParams();
+    params.set('email',email);
     LogService.debug('checkRepeatEmail params:'+params);
     return this.http.get(Config.url_checkEmail,{params:params}).toPromise()
       .then(response => response.json())

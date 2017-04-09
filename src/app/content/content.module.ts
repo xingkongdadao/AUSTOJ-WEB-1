@@ -8,11 +8,11 @@ import {TagsAsideComponent} from "../aside/tags-aside/tags-aside.component";
 import {CatelogAsideComponent} from "../aside/catelog-aside/catelog-aside.component";
 import {UserAsideComponent} from "../aside/user-aside/user-aside.component";
 import {ContentAndAsideComponent} from "./content.component";
-import {StartComponent} from "./start/start.component";
+import {ProblemTableComponent} from "./problem-table/problem.table.component";
 import {PaginationModule, TooltipModule} from "ng2-bootstrap";
-import {UserService} from "../service/user.service";
-import {ArticleService} from "../service/article.service";
 import {FormsModule} from "@angular/forms";
+import { ContestComponent } from './contest/contest.component';
+import { RankComponent } from './rank/rank.component';
 
 @NgModule({
   imports: [
@@ -27,8 +27,7 @@ import {FormsModule} from "@angular/forms";
     ContentAndAsideComponent,
     TipsComponent, ArticleAsideComponent,
     TagsAsideComponent, CatelogAsideComponent,
-    UserAsideComponent,StartComponent
+    UserAsideComponent,ProblemTableComponent, ContestComponent, RankComponent
   ],
-  providers:[UserService,ArticleService]
 })
 export class ContentAndAsideModule { }
