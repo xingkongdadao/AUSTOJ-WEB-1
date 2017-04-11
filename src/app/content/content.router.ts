@@ -3,6 +3,8 @@ import {Routes} from "@angular/router";
 import {ContentAndAsideComponent} from "./content.component";
 import {ProblemTableComponent} from "./problem-table/problem.table.component";
 import {RankComponent} from "./rank/rank.component";
+import {ProblemComponent} from "./problem/problem.component";
+import {SubmitTableComponent} from "./submit-table/submit-table.component";
 
 export const childRouter : Routes = [
   {
@@ -14,6 +16,8 @@ export const childRouter : Routes = [
       {path:'practice',component:ProblemTableComponent},
       {path:'master',component:ProblemTableComponent},
       {path:'rank',component:RankComponent},
+      {path:'submit',component:SubmitTableComponent},
+      {path:'problem/:id',component:ProblemComponent},
     ]
   }
   ];

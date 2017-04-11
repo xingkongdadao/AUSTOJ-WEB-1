@@ -1,0 +1,10 @@
+.blog{
+  width: 30px;
+  max-width: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+.blog a{
+  display: inline-block;
+}

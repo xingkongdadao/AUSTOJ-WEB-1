@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {UserRankModel} from "../../model/user-rank-model";
+import {UserService} from "../../service/user.service";
+import {LogService} from "../../service/log.service";
 
 @Component({
   selector: 'app-rank',
@@ -7,9 +10,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RankComponent implements OnInit {
 
-  constructor() { }
+  totalUserRanks: UserRankModel[];
+  userRanks: UserRankModel[];
+  totalItems: number = 0;
+  currentPage: number = 1;
+  pageSize: number = 20;
+  startId: number = 1;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.getTotalRankUsers()
+  }
+
+  /**
+   * 当前页监听
+   * @param event
+   */
+  public pageChanged(event:any):void {
+    this.currentPage = event.page;
+    this.getRankUsers();
+  }
+
+  /**
+   * 拿到当前页的排名用户
+   */
+  getRankUsers(){
+    if (this.totalUserRanks && this.totalUserRanks.length > 0){
+      this.startId = (this.currentPage -1 ) * this.pageSize + 1;
+      this.userRanks = this.totalUserRanks.slice(this.startId,this.startId+this.pageSize);
+    }
+  }
+
+  /**
+   * 得到全部排名用户
+   */
+  getTotalRankUsers(){
+    this.userService.fetchRankUsers()
+      .then(x => {
+        if (x.status == 0) {
+          this.totalUserRanks = x.data as UserRankModel[];
+          this.userRanks = this.totalUserRanks.slice(0,this.pageSize);
+          this.totalItems = this.totalUserRanks.length;
+        }
+      })
   }
 
 }

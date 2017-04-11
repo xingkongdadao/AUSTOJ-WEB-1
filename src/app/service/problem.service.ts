@@ -27,4 +27,15 @@ export class ProblemService {
               .then(response => response.json())
               .catch(LogService.handleError)
   }
+
+  /**
+   * 得到一个题目的详情
+   * @param id 该题目id
+   * @returns {Promise<any>}
+   */
+  getProblem(id: number): Promise<any>{
+    return this.http.get(Config.url_problem_id+id).toPromise()
+              .then(response => response.json())
+              .catch(LogService.handleError)
+  }
 }

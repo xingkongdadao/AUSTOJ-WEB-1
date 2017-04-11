@@ -11,6 +11,11 @@ export class Config {
    */
   static url_indexUsers: string = Config.baseUrl+'/index/users';
   /**
+   * 获取排名用户信息
+   * @type {string}
+   */
+  static url_rankUsers: string = Config.baseUrl+'/rank/users';
+  /**
    * 获取验证码
    * @type {string}
    */
@@ -59,5 +64,15 @@ export class Config {
    * 获取某一阶段的题目
    * @type {string}
    */
-  static url_problem_stage: string = Config.baseUrl+'/problem-table//stage/';
+  static url_problem_stage: string = Config.baseUrl+'/problem/stage/';
+  /**
+   * 得到一个题目详情
+   * @type {string}
+   */
+  static url_problem_id: string = Config.baseUrl+'/problem/';
+  /**
+   * 得到判题结果列表
+   * @type {string}
+   */
+  static url_judge_list: string = Config.baseUrl+'/judge/list';
 }

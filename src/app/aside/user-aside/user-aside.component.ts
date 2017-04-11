@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserInfoModel} from "../../model/user-info-model";
 import {UserService} from "../../service/user.service";
+import {CookieService} from "../../service/cookie-service.service";
 
 @Component({
   selector: 'app-user-aside',
@@ -11,10 +12,12 @@ export class UserAsideComponent implements OnInit {
 
   currentUser: UserInfoModel;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+    this.currentUser = this.userService.currentUser();
+  }
 
   ngOnInit() {
-    this.currentUser = this.userService.getCurrentUser();
+
   }
 
 }

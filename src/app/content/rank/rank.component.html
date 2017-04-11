@@ -21,14 +21,16 @@
   <tr class="text-center" *ngIf="userRanks && userRanks.length == 0">
     <td colspan="100%">无更多的数据......</td>
   </tr>
-  <!--<tr class="text-center">-->
-    <!--<td class="col-xs-1">RankID</td>-->
-    <!--<td class="col-xs-3">昵称</td>-->
-    <!--<td class="col-xs-1">AC</td>-->
-    <!--<td class="col-xs-1">Submit</td>-->
-    <!--<td class="col-xs-1">Ratio</td>-->
-    <!--<td class="col-xs-1">个人站点</td>-->
-  <!--</tr>-->
+  <tr class="text-center" *ngFor="let item of userRanks,let i= index">
+    <td class="col-xs-1">{{startId+i}}</td>
+    <td class="col-xs-3">{{item.nickname}}</td>
+    <td class="col-xs-1">{{item.solved}}</td>
+    <td class="col-xs-1">{{item.submit}}</td>
+    <td class="col-xs-1">{{item.acRate}}</td>
+    <td class="col-xs-1 blog">
+      <a target="_blank" [href]="item.blog">入口</a>
+    </td>
+  </tr>
   </tbody>
 </table>
 <!--一页显示20条-->

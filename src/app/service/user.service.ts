@@ -4,11 +4,16 @@ import {Http,URLSearchParams} from "@angular/http";
 import {LogService} from "./log.service";
 import {Config} from "../model/config";
 import {UserInfoModel} from "../model/user-info-model";
+import {Observable, Subject} from "rxjs";
+import {CookieService} from "./cookie-service.service";
 
 @Injectable()
 export class UserService implements OnInit{
-
-  currentUser: UserInfoModel;
+  /**
+   * todo 订阅赋值无效
+   * @type {Subject<UserInfoModel>}
+   */
+  subject: Subject<UserInfoModel> = new Subject<UserInfoModel> ();
 
   constructor(private http: Http) { }
 
@@ -20,29 +25,44 @@ export class UserService implements OnInit{
    * 得到当前用户
    * @returns {UserInfoModel}
    */
-  getCurrentUser(){
-    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    return this.currentUser;
+  getCurrentUser(): Observable<UserInfoModel>{
+    return this.subject.asObservable();
+  }
+
+  currentUser(): UserInfoModel{
+    let user = CookieService.getCookie("currentUser");
+    LogService.debug(user);
+    if (user){
+      return JSON.parse(user)
+    }
+    return null;
+  }
+
+  /**
+   * 判断是否登录
+   * @returns {string|boolean}
+   */
+  isLogin():boolean{
+    let user = CookieService.getCookie("currentUser");
+    return user && user.length > 0;
   }
 
   /**
    * 刷新当前用户的基本信息
    * @param userId 用户id
    */
-  freshCurrentUser(userId: number, isNew: boolean): UserInfoModel{
+  freshCurrentUser(userId: number, isNew: boolean){
     LogService.debug("freshCurrentUser id"+userId);
-    if (isNew || this.currentUser == null){
+    if (isNew){
       this.fetchUserInfo(userId)
         .then(x => {
           if (x.status == 0){
-            this.currentUser = x.data as UserInfoModel;
-            window.localStorage.setItem("currentUser",JSON.stringify(this.currentUser));
-            return this.currentUser;
+            let tempUser = x.data as UserInfoModel;
+            CookieService.addCookie("currentUser",JSON.stringify(tempUser));
+            this.subject.next(tempUser);
           }
         });
     }
-    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    return this.currentUser;
   }
 
   /**
@@ -97,6 +117,15 @@ export class UserService implements OnInit{
     return this.http.get(Config.url_indexUsers).toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
+  }
+
+  /**
+   * 获取排名用户
+   */
+  fetchRankUsers(): Promise<any>{
+    return this.http.get(Config.url_rankUsers).toPromise()
+      .then(response => response.json())
+      .catch(LogService.handleError)
   }
 
   /**

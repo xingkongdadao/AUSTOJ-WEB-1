@@ -1,0 +1,77 @@
+<div class="col-md-9 col-md-offset-1" *ngIf="problem">
+  <div class="title">
+    <h3 class="text-center"><a>A+B</a></h3>
+    <p class="text-center text-danger">
+      <span>时间:{{problem.timeLimit}}ms  </span>
+      <span> 内存:{{problem.memoryLimit/1000}}M</span></p>
+  </div>
+  <h4>题目描述:</h4>
+  <p>
+    {{problem.description}}
+  </p>
+  <h4>输入:</h4>
+  <p>
+    {{problem.input}}
+  </p>
+  <h4>输出:</h4>
+  <p>
+    {{problem.output}}
+  </p>
+  <h4>样例输入:</h4>
+  <p>
+    {{problem.sampleInput}}
+  </p>
+  <h4>样例输出:</h4>
+  <p>
+    {{problem.sampleOutput}}
+  </p>
+  <h4>提示:</h4>
+  <p>
+    {{problem.hit}}
+  </p>
+  <h4>来源:</h4>
+  <p>
+    <a href="#">{{problem.nickname}}</a>
+  </p>
+
+  <div  *ngIf="currentUser">
+    <button type="button" class="btn btn-primary btn-lg center-block" (click)="staticModal.show()">提&nbsp;交
+    </button>
+    <!--模态框-->
+    <!--具体提交的模态框-->
+    <div class="modal fade" bsModal #staticModal="bs-modal" tabindex="100" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="staticModal.hide()"><span
+              aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">提交代码</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="radio-inline">选择编译器:</label>
+              <label class="radio-inline">
+                <input type="radio" name="lang" [checked]="currentUser.language === 'C'" value="C" [(ngModel)]="judgeModel.lang"> C
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="lang" [checked]="currentUser.language === 'C++'" value="C++" [(ngModel)]="judgeModel.lang"> C++
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="lang" [checked]="currentUser.language === 'Java'" value="Java" [(ngModel)]="judgeModel.lang"> Java
+              </label>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" rows="20" cols="20" [(ngModel)]="judgeModel.source"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" aria-label="Close" (click)="staticModal.hide()">Close
+            </button>
+            <button type="button" class="btn btn-primary" (click)="doSubmit()">Commit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

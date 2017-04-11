@@ -1,33 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserInfoModel} from "../model/user-info-model";
 import {UserService} from "../service/user.service";
+import {CookieService} from "../service/cookie-service.service";
+import {LogService} from "../service/log.service";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit{
 
   isBackColor: boolean = false;
   currentUser: UserInfoModel;
 
-  constructor(private router: Router,private userService: UserService) {
-
+  constructor(private router: Router,
+  private userService: UserService) {
+    this.currentUser = this.userService.currentUser();
   }
 
   ngOnInit() {
     this.isAddBackColor();
-    //绑定用户到一起
-    this.currentUser = this.userService.getCurrentUser();
   }
 
   /**
    * 用户退出
    */
   loginOut(){
-    localStorage.removeItem("currentUser");
+    CookieService.addCookie("currentUser",null,-10);
     //刷新本页面
     window.location.reload();
   }

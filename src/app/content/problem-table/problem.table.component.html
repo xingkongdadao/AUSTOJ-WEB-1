@@ -33,7 +33,7 @@
   </tr>
   <tr class="text-center" *ngFor="let item of problems">
     <td class="col-xs-1">{{item.id}}</td>
-    <td class="col-xs-5"><a href="#">{{item.title}}</a></td>
+    <td class="col-xs-5"><a routerLink="/aust/problem/{{item.id}}">{{item.title}}</a></td>
     <td class="col-xs-2">{{item.keyword}}</td>
     <td class="col-xs-1">{{item.difficulty}}</td>
     <td class="col-xs-2">{{item.acRate}}</td>

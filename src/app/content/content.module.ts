@@ -9,10 +9,12 @@ import {CatelogAsideComponent} from "../aside/catelog-aside/catelog-aside.compon
 import {UserAsideComponent} from "../aside/user-aside/user-aside.component";
 import {ContentAndAsideComponent} from "./content.component";
 import {ProblemTableComponent} from "./problem-table/problem.table.component";
-import {PaginationModule, TooltipModule} from "ng2-bootstrap";
+import {ModalModule, PaginationModule, TooltipModule} from "ng2-bootstrap";
 import {FormsModule} from "@angular/forms";
 import { ContestComponent } from './contest/contest.component';
 import { RankComponent } from './rank/rank.component';
+import { ProblemComponent } from './problem/problem.component';
+import { SubmitTableComponent } from './submit-table/submit-table.component';
 
 @NgModule({
   imports: [
@@ -20,6 +22,7 @@ import { RankComponent } from './rank/rank.component';
     RouterModule.forChild(childRouter),
     TooltipModule.forRoot(),
     PaginationModule.forRoot(),
+    ModalModule.forRoot(),
     FormsModule
   ],
   declarations: [
@@ -27,7 +30,8 @@ import { RankComponent } from './rank/rank.component';
     ContentAndAsideComponent,
     TipsComponent, ArticleAsideComponent,
     TagsAsideComponent, CatelogAsideComponent,
-    UserAsideComponent,ProblemTableComponent, ContestComponent, RankComponent
+    UserAsideComponent,ProblemTableComponent, ContestComponent,
+    RankComponent, ProblemComponent, SubmitTableComponent
   ],
 })
 export class ContentAndAsideModule { }

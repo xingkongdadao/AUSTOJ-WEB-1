@@ -7,6 +7,7 @@ export class UserInfoModel {
   avatar: string;
   email: string;
   motto: string;
+  language: string;
   //用户历史解题
   ACProblems: Array<number>;
   //用户最近解题
