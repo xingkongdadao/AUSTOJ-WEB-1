@@ -1,3 +1,55 @@
-<p>
-  contest works!
+<strong>&nbsp;&nbsp;须知:</strong><br/>
+<p class="page-text">
+  比赛定期展开,只限校内同学参加
 </p>
+<h4 class="text-center">比赛列表</h4>
+<div class="list-view-item">
+  <table class="table table-bordered table-striped text-center" width="90%" style="margin: 0 auto">
+    <caption><h5 class="text-primary">近期的比赛</h5></caption>
+    <tr *ngFor="let item of exprieContest">
+      <td width="10%">{{item.id}}</td>
+      <td width="40%">
+        <a href="javascript:void(0)" (click)="showModal(item.id)">{{item.title}}</a>
+      </td>
+      <td width="20%">{{item.startTime}}</td>
+      <td width="20%">{{item.endTime}}</td>
+      <td width="10%">{{item.typeName}}</td>
+    </tr>
+  </table>
+  <hr style="border: 1px dotted gray;margin-top: 35px"/>
+  <table class="table table-bordered table-striped text-center" width="90%" style="margin: 0 auto">
+    <caption><h5 class="text-primary">结束的比赛</h5></caption>
+    <tr *ngFor="let item of noExprieContest">
+      <td width="10%">{{item.id}}</td>
+      <td width="40%">
+        <a href="javascript:void(0)" (click)="showModal(item.id)">{{item.title}}</a>
+      </td>
+      <td width="20%">{{item.startTime}}</td>
+      <td width="20%">{{item.endTime}}</td>
+      <td width="10%">{{item.typeName}}</td>
+    </tr>
+  </table>
+</div>
+
+<!--密码提交框-->
+<div class="modal fade" bsModal #passwdModal="bs-modal" tabindex="100" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="passwdModal.hide()"  aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">输入口令</h4>
+      </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input class="form-control" type="password" [(ngModel)]="passwd" name="passwd"/>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="passwdModal.hide()">Close</button>
+          <button type="button" class="btn btn-primary" (click)="doPasswdSubmit()">Commit</button>
+        </div>
+    </div>
+  </div>
+</div>

@@ -75,4 +75,20 @@ export class Config {
    * @type {string}
    */
   static url_judge_list: string = Config.baseUrl+'/judge/list';
+  /**
+   * 提交判题
+   * @type {string}
+   */
+  static url_judge_submit: string = Config.baseUrl+'/judge/problem/';
+  /**
+   * 判断竞赛是否可以查看
+   * @type {string}
+   */
+  static url_contest_show: string = Config.baseUrl+'/contest/';
+  /**
+   * 获取竞赛
+   * @type {string}
+   */
+  static url_contest: string = Config.baseUrl+'/contest';
+
 }

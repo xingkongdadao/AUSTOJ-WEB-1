@@ -15,6 +15,7 @@ import { ContestComponent } from './contest/contest.component';
 import { RankComponent } from './rank/rank.component';
 import { ProblemComponent } from './problem/problem.component';
 import { SubmitTableComponent } from './submit-table/submit-table.component';
+import { ContestTableComponent } from './contest-table/contest-table.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,7 @@ import { SubmitTableComponent } from './submit-table/submit-table.component';
     TipsComponent, ArticleAsideComponent,
     TagsAsideComponent, CatelogAsideComponent,
     UserAsideComponent,ProblemTableComponent, ContestComponent,
-    RankComponent, ProblemComponent, SubmitTableComponent
+    RankComponent, ProblemComponent, SubmitTableComponent, ContestTableComponent
   ],
 })
 export class ContentAndAsideModule { }

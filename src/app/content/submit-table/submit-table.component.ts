@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {UserInfoModel} from "../../model/user-info-model";
-import {CookieService} from "../../service/cookie-service.service";
 import {SubmitModel} from "../../model/submit-model";
 import {SubmitService} from "../../service/submit.service";
 import {LogService} from "../../service/log.service";

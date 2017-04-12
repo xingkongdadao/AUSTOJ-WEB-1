@@ -5,6 +5,8 @@ import {ProblemTableComponent} from "./problem-table/problem.table.component";
 import {RankComponent} from "./rank/rank.component";
 import {ProblemComponent} from "./problem/problem.component";
 import {SubmitTableComponent} from "./submit-table/submit-table.component";
+import {ContestComponent} from "./contest/contest.component";
+import {ContestTableComponent} from "./contest-table/contest-table.component";
 
 export const childRouter : Routes = [
   {
@@ -18,6 +20,8 @@ export const childRouter : Routes = [
       {path:'rank',component:RankComponent},
       {path:'submit',component:SubmitTableComponent},
       {path:'problem/:id',component:ProblemComponent},
+      {path:'contest',component:ContestComponent},
+      {path:'contest/:id',component:ContestTableComponent},
     ]
   }
   ];

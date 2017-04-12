@@ -23,6 +23,7 @@ import { ErrorComponent } from './home/error/error.component';
 import {ArticleService} from "./service/article.service";
 import {ProblemService} from "./service/problem.service";
 import {SubmitService} from "./service/submit.service";
+import {ContestService} from "./service/contest.service";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import {SubmitService} from "./service/submit.service";
     ToastModule.forRoot(),
     ModalModule.forRoot()
   ],
-  providers: [UserService,ArticleService,ProblemService,SubmitService],
+  providers: [UserService,ArticleService,ProblemService,SubmitService,ContestService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

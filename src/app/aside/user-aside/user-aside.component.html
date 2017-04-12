@@ -14,8 +14,7 @@
     </div>
     <p>格言:<br><span>{{currentUser.motto}}</span></p>
     <p class="tagcloud" *ngIf="currentUser.ACRecents" >近期AC:<br>
-      <!--todo 题目链接-->
-      <a href="#" style="font-size: 12px;" *ngFor="let item of currentUser.ACRecents">{{item}}</a>
+      <a style="font-size: 12px;" *ngFor="let item of currentUser.ACRecents" routerLink="/aust/problem/{{item}}">{{item}}</a>
     </p>
   </div>
 </aside>
