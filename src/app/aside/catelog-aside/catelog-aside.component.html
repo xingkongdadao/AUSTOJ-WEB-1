@@ -4,7 +4,7 @@
   <ul class="list-unstyled catelogDO">
     <li *ngFor="let item of catelogs">
       <i class="fa fa-bookmark-o">&nbsp;&nbsp;
-        <a href="#" >{{item.name}}</a>
+        <a routerLink="/aust/catelog/{{item.id}}" >{{item.name}}</a>
       </i>
     </li>
   </ul>

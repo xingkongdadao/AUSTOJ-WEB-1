@@ -4,7 +4,7 @@
     如有问题请发送反馈告知
   </p>
   <h4 class="text-center">提交列表</h4>
-  <table class="table-bordered table-striped text-center" width="100%">
+  <table class="table-bordered table-striped text-center table-condensed" width="100%">
     <thead>
     <tr>
       <th class="col-xs-1">ID</th>
@@ -27,11 +27,12 @@
     </tr>
     <tr class="text-center" *ngFor="let item of submits">
       <td class="col-xs-1">{{item.id}}</td>
-      <td class="col-xs-3">{{item.problemTitle}}</td>
+      <td class="col-xs-3"><a routerLink="/aust/problem/{{item.problemId}}">{{item.problemTitle}}</a></td>
       <td class="col-xs-3">{{item.createdate}}</td>
-      <td class="col-xs-1">{{item.memory}}(M)</td>
-      <td class="col-xs-1">{{item.time}}(ms)</td>
-      <td class="col-xs-1">{{item.codeLength}}(Kb)</td>
+      <!--todo 该处操作应该放到后端-->
+      <td class="col-xs-1">{{item.memory/1000.0}}</td>
+      <td class="col-xs-1">{{item.time}}</td>
+      <td class="col-xs-1">{{item.codeLength}}</td>
       <td class="col-xs-1">{{item.language}}</td>
       <td class="col-xs-2">{{item.verdict}}</td>
       <td class="col-xs-1">{{item.testcase}}</td>
@@ -40,7 +41,7 @@
   </table>
 
   <!--一页显示20条-->
-  <div *ngIf="total > 20">
+  <div *ngIf="total > 20" style="margin-top: 20px">
     <pagination [boundaryLinks]="false" [totalItems]="total" [(ngModel)]="currentPage"
                 (pageChanged)="pageChanged($event)" [itemsPerPage]="20" class="pagination-sm"
                 previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>

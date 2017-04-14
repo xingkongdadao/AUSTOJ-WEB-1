@@ -3,6 +3,7 @@ import {IndexComponent} from "./home/index/index.component";
 import {LoginComponent} from "./home/login/login.component";
 import {RegisterComponent} from "./home/register/register.component";
 import {EmailCheckComponent} from "./home/email-check/email-check.component";
+import {ErrorComponent} from "./home/error/error.component";
 
 
 export const appRoutes: Routes = [
@@ -22,6 +23,10 @@ export const appRoutes: Routes = [
   {
     path:'register',
     component:RegisterComponent
+  },
+  {
+    path:'error',
+    component:ErrorComponent
   },
   {
     path:'aust',

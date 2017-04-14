@@ -9,8 +9,8 @@ export class UserInfoModel {
   motto: string;
   language: string;
   //用户历史解题
-  ACProblems: Array<number>;
+  aCProblems: number[];
   //用户最近解题
-  ACRecents: Array<number>;
+  aCRecents: number[];
 
 }

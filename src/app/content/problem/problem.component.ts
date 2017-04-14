@@ -40,6 +40,7 @@ export class ProblemComponent implements OnInit {
         return this.problemService.getProblem(params['id'])
       })
       .subscribe(x => {
+        LogService.debug('ProblemComponent'+x);
         if (x.status == 0){
           this.problem = x.data as ProblemModel;
           this.judgeModel.problemId = this.problem.id;

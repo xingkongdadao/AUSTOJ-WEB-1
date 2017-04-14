@@ -13,8 +13,8 @@
       <a href="/user/1" class="center-block user-name" >{{currentUser.nickname}}</a>
     </div>
     <p>格言:<br><span>{{currentUser.motto}}</span></p>
-    <p class="tagcloud" *ngIf="currentUser.ACRecents" >近期AC:<br>
-      <a style="font-size: 12px;" *ngFor="let item of currentUser.ACRecents" routerLink="/aust/problem/{{item}}">{{item}}</a>
+    <p class="tagcloud" *ngIf="currentUser.aCRecents" >近期AC:<br>
+      <a style="font-size: 12px;" *ngFor="let item of currentUser.aCRecents" routerLink="/aust/problem/{{item}}">{{item}}</a>
     </p>
   </div>
 </aside>

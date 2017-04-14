@@ -41,10 +41,14 @@ export class ContestComponent implements OnInit {
    * 显示modal,显示时拿到用户点击的竞赛id
    * @param contestId 竞赛id
    */
-  showModal(contestId: number){
+  showModal(contestId: number,contestType: string){
     if (!this.passwdModal.isShown && contestId){
       this.currentContestId = contestId;
-      this.passwdModal.show();
+      if (contestType == '公开赛'){
+        this.doPasswdSubmit();
+      }else {
+        this.passwdModal.show();
+      }
     }
   }
 
@@ -52,13 +56,13 @@ export class ContestComponent implements OnInit {
    * 提交判断是否可以查看该竞赛
    */
   doPasswdSubmit(){
-    this.contestService.isCanView(this.currentContestId)
+    this.contestService.isCanView(this.currentContestId,this.passwd)
       .then(x => {
         if (LogService.filterJson(x,this.toastr)){
           this.contestService.getContest(this.currentContestId)
             .then(x => {
               if (LogService.filterJson(x,this.toastr)){
-                this.router.navigateByUrl('/contest/'+this.currentContestId);
+                this.router.navigateByUrl('/aust/contest/'+this.currentContestId);
               }
             })
         }
@@ -71,6 +75,7 @@ export class ContestComponent implements OnInit {
   getContest(){
     this.contestService.getContestTable()
       .then(x => {
+        LogService.debug(x);
         if (x.status == 0) {
           this.exprieContest = x.data.exprieContest as ContestModel[];
           this.noExprieContest = x.data.noExprieContest as ContestModel[];

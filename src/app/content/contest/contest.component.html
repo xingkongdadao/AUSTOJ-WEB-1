@@ -6,10 +6,10 @@
 <div class="list-view-item">
   <table class="table table-bordered table-striped text-center" width="90%" style="margin: 0 auto">
     <caption><h5 class="text-primary">近期的比赛</h5></caption>
-    <tr *ngFor="let item of exprieContest">
+    <tr *ngFor="let item of noExprieContest">
       <td width="10%">{{item.id}}</td>
       <td width="40%">
-        <a href="javascript:void(0)" (click)="showModal(item.id)">{{item.title}}</a>
+        <a href="javascript:void(0)" (click)="showModal(item.id,item.typeName)">{{item.title}}</a>
       </td>
       <td width="20%">{{item.startTime}}</td>
       <td width="20%">{{item.endTime}}</td>
@@ -19,10 +19,10 @@
   <hr style="border: 1px dotted gray;margin-top: 35px"/>
   <table class="table table-bordered table-striped text-center" width="90%" style="margin: 0 auto">
     <caption><h5 class="text-primary">结束的比赛</h5></caption>
-    <tr *ngFor="let item of noExprieContest">
+    <tr *ngFor="let item of exprieContest">
       <td width="10%">{{item.id}}</td>
       <td width="40%">
-        <a href="javascript:void(0)" (click)="showModal(item.id)">{{item.title}}</a>
+        <a href="javascript:void(0)" (click)="showModal(item.id,item.typeName)">{{item.title}}</a>
       </td>
       <td width="20%">{{item.startTime}}</td>
       <td width="20%">{{item.endTime}}</td>

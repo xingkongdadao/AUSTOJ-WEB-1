@@ -27,7 +27,7 @@ export class SubmitService {
    */
   judgeSubmit(judgeModel: JudgeModel){
     let params = new URLSearchParams();
-    params.set('code',judgeModel.source);
+    params.set('code',window.btoa(judgeModel.source));
     params.set('lang',judgeModel.lang);
     return this.http.post(Config.url_judge_submit+judgeModel.problemId,params).toPromise()
             .then(response => response.json())

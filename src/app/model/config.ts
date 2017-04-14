@@ -66,6 +66,11 @@ export class Config {
    */
   static url_problem_stage: string = Config.baseUrl+'/problem/stage/';
   /**
+   * 得到某一目录下的题目
+   * @type {string}
+   */
+  static url_problem_catelog: string = Config.baseUrl+'/problem/catelog/';
+  /**
    * 得到一个题目详情
    * @type {string}
    */

@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {ProblemTableModel} from "../../model/problem-table-model";
-import {ProblemService} from "../../service/problem.service";
 import {LogService} from "../../service/log.service";
-import {Router} from "@angular/router";
+import {ProblemTableModel} from "../../model/problem-table-model";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ProblemService} from "../../service/problem.service";
 
 @Component({
-  selector: 'app-start',
-  templateUrl: './problem.table.component.html',
-  styleUrls: ['./problem.table.component.scss']
+  selector: 'app-catelog-problem',
+  templateUrl: './catelog-problem.component.html',
+  styleUrls: ['./catelog-problem.component.scss']
 })
-export class ProblemTableComponent implements OnInit {
-
+export class CatelogProblemComponent implements OnInit {
 
   problems: ProblemTableModel[];
   public search: string;
@@ -18,28 +17,22 @@ export class ProblemTableComponent implements OnInit {
   public totalItems: number = 0;
   public currentPage: number = 1;
   //表示当前所处路由下
-  private currentStage: number = 1;
-  public currentMsg: string;
+  public currentCateLog: string;
+  public catelogName: string;
 
   constructor(private problemService: ProblemService,
-              private router: Router) {
-    switch (router.url){
-      case "/aust/practice":
-        this.currentStage = 2;
-        this.currentMsg = 'practice';
-        break;
-      case "/aust/master":
-        this.currentStage = 3;
-        this.currentMsg = 'master';
-        break;
-      default:
-        this.currentStage = 1;
-        this.currentMsg = 'start';
-    }
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.getProblemTable();
+    this.route.params
+      .switchMap((params,Params) => {
+        this.currentCateLog = params['id'];
+        return this.currentCateLog;
+      })
+      .subscribe(x => {
+        this.getProblemTable();
+      });
   }
 
   /**
@@ -71,15 +64,17 @@ export class ProblemTableComponent implements OnInit {
    */
   getProblemTable(){
     LogService.debug("current page "+this.currentPage);
-    LogService.debug("current stage "+this.currentStage);
-    this.problemService.getProblemTable(1,this.search,this.order,this.currentPage,20)
+    let catelog = Number.parseInt(this.currentCateLog);
+    this.problemService.getCatelogProblemTable(catelog,this.search,this.order,this.currentPage,20)
       .then(x => {
         if (x.status == 0){
           this.problems = x.data.contents as ProblemTableModel[];
           this.totalItems = x.data.total;
+          this.catelogName = x.data.catelogName;
           LogService.debug("getProblemTable:");
           LogService.debug(x);
         }
       })
   }
+
 }

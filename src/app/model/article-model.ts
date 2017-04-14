@@ -4,4 +4,5 @@
 export class ArticleModel {
   id: number;
   title: string;
+
 }

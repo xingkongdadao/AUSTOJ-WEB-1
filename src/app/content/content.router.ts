@@ -7,6 +7,7 @@ import {ProblemComponent} from "./problem/problem.component";
 import {SubmitTableComponent} from "./submit-table/submit-table.component";
 import {ContestComponent} from "./contest/contest.component";
 import {ContestTableComponent} from "./contest-table/contest-table.component";
+import {CatelogProblemComponent} from "./catelog-problem/catelog-problem.component";
 
 export const childRouter : Routes = [
   {
@@ -22,6 +23,8 @@ export const childRouter : Routes = [
       {path:'problem/:id',component:ProblemComponent},
       {path:'contest',component:ContestComponent},
       {path:'contest/:id',component:ContestTableComponent},
+      {path:'catelog/:id',component:CatelogProblemComponent},
+      {path:'**',redirectTo:'/error'},
     ]
   }
   ];

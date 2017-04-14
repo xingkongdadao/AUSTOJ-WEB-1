@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http} from "@angular/http";
+import {Http, URLSearchParams} from "@angular/http";
 import {Config} from "../model/config";
 import {LogService} from "./log.service";
 
@@ -12,8 +12,10 @@ export class ContestService {
    * 判断指定竞赛是否可以显示
    * @param contestId 竞赛id
    */
-  isCanView(contestId: number): Promise<any>{
-    return this.http.post(Config.url_contest_show+contestId,null).toPromise()
+  isCanView(contestId: number,passwd: string): Promise<any>{
+    let params = new URLSearchParams();
+    params.set('passwd',passwd);
+    return this.http.post(Config.url_contest_show+contestId,params).toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
   }

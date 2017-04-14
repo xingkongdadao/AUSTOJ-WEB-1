@@ -31,6 +31,7 @@ export class ContestTableComponent implements OnInit {
         return this.contestService.getContest(params['id'])
       })
       .subscribe(x => {
+        LogService.debug("ContestTableComponent"+x);
         if (LogService.filterJson(x,this.toastr)){
           this.problems = x.data.contents as ProblemTableModel[];
           this.contest = x.data as ContestModel;
