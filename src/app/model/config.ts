@@ -61,6 +61,16 @@ export class Config {
    */
   static url_article_aside: string = Config.baseUrl+'/articles/aside';
   /**
+   * 获取文章列表
+   * @type {string}
+   */
+  static url_articles: string = Config.baseUrl+'/articles';
+  /**
+   * 获取文章详情
+   * @type {string}
+   */
+  static url_articles_detail: string = Config.baseUrl+'/article/';
+  /**
    * 获取某一阶段的题目
    * @type {string}
    */

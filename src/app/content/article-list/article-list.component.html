@@ -1,58 +1,58 @@
 <!--顶部公共样式-->
 <div class="article-top row">
   <div class="col-md-6">
-    <h5>当前搜索: <a href="#">Spring</a></h5>
+    <h5>当前搜索: <a href="#">{{currentSearch}}</a></h5>
   </div>
   <div class="col-md-3 col-md-offset-3">
     <form method="get">
       <div class="search input-group">
-        <input type="search" class="form-control" style="float: right" placeholder="Search" name="search">
+        <input type="search" class="form-control" style="float: right" name="search" placeholder="Search" [(ngModel)]="currentSearch">
         <span class="input-group-btn">
-          <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+          <button class="btn btn-default" type="submit" (click)="doSearch()"><i class="fa fa-search"></i></button>
         </span>
       </div>
     </form>
   </div>
 </div>
 <!--文章列表-->
-<article>
+<article *ngFor="let item of articleModels">
   <!--时间-->
   <div class="post-date">
-    <span class="date-month" >08月</span>
-    <span class="date-day" >25</span>
-    <span class="date-year" >2016</span>
+    <span class="date-month" >{{item.month}}月</span>
+    <span class="date-day" >{{item.day}}</span>
+    <span class="date-year" >{{item.year}}</span>
   </div>
   <div class="post-articleDO">
     <header class="post-title">
-      <span class="text-danger">[置顶]</span>
-      <a href="#" target="_blank" >Spring实战教程</a>
+      <span class="text-danger" *ngIf="item.isTop">[置顶]</span>
+      <a routerLink="/aust/article/{{item.id}}" >{{item.title}}</a>
     </header>
     <div class="post-content">
       <p>
-        使用说明：http://zhw-island.com/owl-beta/#content 这是我第四个主题，名为“Pluto”，中文即“冥王星”，
+        {{item.summary}}
       </p>
       <div class="read_more">
-        <a href="#" target="_blank" >阅读更多</a>
+        <a routerLink="/aust/article/{{item.id}}">阅读更多</a>
       </div>
     </div>
     <ul class="post-meta list-inline">
       <li class="mate-cat fl clearfix">
         <i class="fa fa-userDO"></i>
-        <a href="http://zhw-island.com/category/wordpress/">niuli</a>
+        <a href="http://zhw-island.com/category/wordpress/">{{item.nickname}}</a>
       </li>
       <li class="meta-tabs fl clearfix">
         <i class="fa fa-tags"></i>
-          <a rel="tag">Pluto</a>
+          <a href="javaScript:void(0)" rel="tag" *ngFor="let tag of item.keyword.split(',')" (click)="doTagSearch(tag)">{{tag}}</a>
       </li>
       <li class="mate-com fr">
         <i class="fa fa-eye"></i>
-        <span>91</span>
+        <span>{{item.viewcount}}</span>
       </li>
-      <li class="meta-like fr mr0">
+      <li class="meta-like fr mr0" *ngIf="item.isVote">
         <a href="javascript:void(0)"
            title="Like" >
           <i class="fa fa-heart-o"></i>
-          <span>91</span>
+          <span>{{item.likecount}}</span>
         </a>
       </li>
       <!--评论数暂时不加-->
@@ -63,3 +63,9 @@
     </ul>
   </div>
 </article>
+<!--一页显示20条-->
+<div *ngIf="totalItems > pageSize">
+  <pagination [boundaryLinks]="false" [totalItems]="totalItems" [(ngModel)]="currentPage"
+              (pageChanged)="pageChanged($event)" [itemsPerPage]="pageSize" class="pagination-sm"
+              previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+</div>

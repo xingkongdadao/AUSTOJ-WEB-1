@@ -1,0 +1,117 @@
+.article-top {
+  border-bottom: 2px dotted gray;
+}
+
+.article-top .search {
+  margin-top: 5px;
+}
+
+.article-top .search button {
+  background-color: #fff;
+  color: gray;
+}
+
+.article-top .search button:hover {
+  background-color: #e6e6e6;
+  color: black;
+}
+
+article {
+  display: block;
+  position: relative;
+  margin-left: 70px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.post-date {
+  color: #908b6b;
+  text-shadow: 0 1px 1px #fff;
+  background: url(/src/assets/images/post-time.png) no-repeat;
+  position: absolute;
+  top: 0;
+  left: -80px;
+  width: 65px;
+  height: 78px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.post-date span {
+  display: block;
+}
+
+.post-date .date-month {
+  height: 25px;
+  line-height: 27px;
+  font-size: 15px;
+}
+
+.post-date .date-day {
+  height: 25px;
+  line-height: 26px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.post-date .date-year {
+  height: 25px;
+  line-height: 22px;
+  font-size: 13px;
+}
+
+article .post-title {
+  background: #dfddd4;
+  margin-bottom: 5px;
+}
+article p{
+  text-indent:2em;
+}
+article .post-title a {
+  color: #524638;
+  text-shadow: 0 1px 0 #d4d0c4;
+  font-size: 20px;
+}
+
+article .post-title span {
+  font-size: 20px;
+}
+
+.post-article {
+  padding: 10px 10px;
+  border-left: 1px solid #50483e;
+  border-right: 1px solid #50483e;
+  border-bottom: 1px dashed #50483e;
+}
+
+.post-article p {
+  margin-bottom: 5px;
+}
+
+.post-article a:hover {
+  color: #34495E;
+}
+
+.read_more a {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 7px 15px;
+  margin-top: -10px;
+  border-radius: 15px;
+  color: #70675c;
+  background: #dfddd4;
+}
+
+.post-meta {
+  color: #7b7266;
+  text-shadow: 0 1px 0 #d4d0c4;
+}
+
+.fl {
+  float: left !important;
+}
+
+.fr {
+  float: right !important;
+}

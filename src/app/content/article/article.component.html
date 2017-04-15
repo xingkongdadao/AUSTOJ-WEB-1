@@ -1,0 +1,15 @@
+<div *ngIf="articleModel">
+  <div class="title">
+    <h5 class="text-center"><a href="#">{{articleModel.title}}</a></h5>
+    <p class="text-center">
+      作者:<span>{{articleModel.nickname}}&nbsp;&nbsp;</span>
+  </div>
+  <article style="text-indent: 2em" class="preview-panel">
+    <aside class="widget">
+      <h5><span>正文内容</span></h5>
+    </aside>
+    <div [innerHtml]="articleModel.htmlContent">
+    </div>
+  </article>
+
+</div>
