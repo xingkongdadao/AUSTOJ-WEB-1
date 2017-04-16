@@ -3,8 +3,7 @@
   <ul class="list-unstyled article">
     <li *ngFor="let item of articlesAside">
       <i class="fa fa-file-text-o">
-        <!--todo 文章链接-->
-        <a target="_blank">{{item.title}}</a>
+        <a routerLink="/aust/article/{{item.id}}">{{item.title}}</a>
       </i>
     </li>
   </ul>

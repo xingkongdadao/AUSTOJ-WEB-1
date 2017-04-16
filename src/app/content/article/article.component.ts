@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ArticleModel} from "../../model/article-model";
 import {ActivatedRoute, Params} from "@angular/router";
 import {ArticleService} from "../../service/article.service";
-import {LogService} from "../../service/log.service";
 
 @Component({
   selector: 'app-article',

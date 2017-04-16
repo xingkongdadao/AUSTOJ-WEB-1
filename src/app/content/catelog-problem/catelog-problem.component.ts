@@ -64,17 +64,20 @@ export class CatelogProblemComponent implements OnInit {
    */
   getProblemTable(){
     LogService.debug("current page "+this.currentPage);
-    let catelog = Number.parseInt(this.currentCateLog);
-    this.problemService.getCatelogProblemTable(catelog,this.search,this.order,this.currentPage,20)
-      .then(x => {
-        if (x.status == 0){
-          this.problems = x.data.contents as ProblemTableModel[];
-          this.totalItems = x.data.total;
-          this.catelogName = x.data.catelogName;
-          LogService.debug("getProblemTable:");
-          LogService.debug(x);
-        }
-      })
+    this.problems = null;
+    window.setTimeout(() =>{
+      let catelog = Number.parseInt(this.currentCateLog);
+      this.problemService.getCatelogProblemTable(catelog,this.search,this.order,this.currentPage,20)
+        .then(x => {
+          if (x.status == 0){
+            this.problems = x.data.contents as ProblemTableModel[];
+            this.totalItems = x.data.total;
+            this.catelogName = x.data.catelogName;
+            LogService.debug("getProblemTable:");
+            LogService.debug(x);
+          }
+        })
+    },500)
   }
 
 }

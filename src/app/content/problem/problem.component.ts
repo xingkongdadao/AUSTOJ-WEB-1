@@ -35,6 +35,7 @@ export class ProblemComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.route.params
       .switchMap((params: Params) => {
         return this.problemService.getProblem(params['id'])

@@ -4,7 +4,7 @@
 export class Config {
 
   // static baseUrl: string = 'http://oj.mrdear.cn';
-  static baseUrl: string = 'http://localhost:8888/api';
+  static baseUrl: string = 'http://oj.mrdear.cn/api';
   /**
    * 获取首页展示用户
    * @type {string}
@@ -105,5 +105,10 @@ export class Config {
    * @type {string}
    */
   static url_contest: string = Config.baseUrl+'/contest';
+  /**
+   * 邮箱验证
+   * @type {string}
+   */
+  static url_email_check: string = Config.baseUrl+'/register/check/token';
 
 }

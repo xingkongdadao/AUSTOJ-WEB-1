@@ -25,6 +25,10 @@ export const appRoutes: Routes = [
     component:RegisterComponent
   },
   {
+    path:'email',
+    component:EmailCheckComponent
+  },
+  {
     path:'error',
     component:ErrorComponent
   },

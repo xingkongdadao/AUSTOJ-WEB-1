@@ -12,7 +12,7 @@
       <th class="col-xs-3">提交时间</th>
       <th class="col-xs-1">内存(M)</th>
       <th class="col-xs-1">时间(ms)</th>
-      <th class="col-xs-1">大小(Kb)</th>
+      <th class="col-xs-1">大小(B)</th>
       <th class="col-xs-1">语言</th>
       <th class="col-xs-2">状态</th>
       <th class="col-xs-1">Pass</th>
@@ -29,12 +29,11 @@
       <td class="col-xs-1">{{item.id}}</td>
       <td class="col-xs-3"><a routerLink="/aust/problem/{{item.problemId}}">{{item.problemTitle}}</a></td>
       <td class="col-xs-3">{{item.createdate}}</td>
-      <!--todo 该处操作应该放到后端-->
-      <td class="col-xs-1">{{item.memory/1000.0}}</td>
+      <td class="col-xs-1">{{item.memory}}</td>
       <td class="col-xs-1">{{item.time}}</td>
       <td class="col-xs-1">{{item.codeLength}}</td>
       <td class="col-xs-1">{{item.language}}</td>
-      <td class="col-xs-2">{{item.verdict}}</td>
+      <td class="col-xs-2" appSolutionHight judgeCode="{{item.verdictCode}}">{{item.verdict}}</td>
       <td class="col-xs-1">{{item.testcase}}</td>
     </tr>
     </tbody>

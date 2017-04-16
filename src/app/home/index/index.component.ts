@@ -4,6 +4,7 @@ import {UserService} from "../../service/user.service";
 import {ToastsManager} from ".1.6.0@ng2-toastr";
 import {LogService} from "../../service/log.service";
 import {UserInfoModel} from "../../model/user-info-model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-index',
@@ -17,15 +18,28 @@ export class IndexComponent implements OnInit {
    */
   indexUpUsers: UserModel[];
   indexDownUsers: UserModel[];
+  email: string;
 
   constructor(private userService: UserService,
               private toastr: ToastsManager,
-              vcr: ViewContainerRef) {
+              vcr: ViewContainerRef,
+              private router: Router
+  ) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
     this.getIndexUsers();
+  }
+
+  /**
+   * 跳转到注册页面
+   */
+  toRegister(){
+    if (this.email){
+      window.localStorage.setItem('registerEmail',this.email);
+      this.router.navigateByUrl('/register')
+    }
   }
 
   /**

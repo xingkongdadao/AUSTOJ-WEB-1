@@ -5,11 +5,10 @@
       <div class="tips-bulls">
         <ul class="list-unstyled marquee container-css">
           <li *ngFor="let item of tips">
-            <!--todo 文章模块加上后修改url-->
-            <a href="#" >{{item.title}}</a>
+            <a routerLink="/aust/article/{{item.articleId}}" >{{item.title}}</a>
           </li>
           <li *ngIf="tips && tips[0]">
-            <a href="#">{{tips[0].title}}</a>
+            <a routerLink="/aust/article/{{tips[0].articleId}}">{{tips[0].title}}</a>
           </li>
         </ul>
       </div>

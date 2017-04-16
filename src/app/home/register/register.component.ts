@@ -28,6 +28,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    this.userInfo.email = window.localStorage.getItem('registerEmail');
+    window.localStorage.removeItem('registerEmail');
   }
 
   /**

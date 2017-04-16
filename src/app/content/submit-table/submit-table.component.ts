@@ -42,6 +42,9 @@ export class SubmitTableComponent implements OnInit {
       while(count-- > 1){
         window.setTimeout(()=>{
           this.getSubmits();
+          if (count == 1){
+            this.userService.freshCurrentUser(this.currentUser.id,true);
+          }
         },count* 5000)
       }
     }
@@ -51,14 +54,17 @@ export class SubmitTableComponent implements OnInit {
    * 得到提交列表
    */
   getSubmits(){
-    this.submitService.getSubmitTable(this.currentPage,this.pageSize)
-      .then(x => {
-        if (LogService.filterJson(x,this.toastr)){
-          this.submits = null;
-          this.total = x.data.total;
-          this.submits = x.data.contents as SubmitModel[]
-        }
-      })
+    this.submits = null;
+    window.setTimeout(() => {
+      this.submitService.getSubmitTable(this.currentPage,this.pageSize)
+        .then(x => {
+          if (LogService.filterJson(x,this.toastr)){
+            this.submits = null;
+            this.total = x.data.total;
+            this.submits = x.data.contents as SubmitModel[]
+          }
+        })
+    },500)
   }
 
   /**

@@ -19,6 +19,8 @@ import { ContestTableComponent } from './contest-table/contest-table.component';
 import { CatelogProblemComponent } from './catelog-problem/catelog-problem.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleComponent } from './article/article.component';
+import {ProblemHightDirective} from "../directive/problem-hight.directive";
+import {SolutionHightDirective} from "../directive/solution-hight.directive";
 
 @NgModule({
   imports: [
@@ -38,7 +40,8 @@ import { ArticleComponent } from './article/article.component';
     RankComponent, ProblemComponent, SubmitTableComponent, ContestTableComponent,
     CatelogProblemComponent,
     ArticleListComponent,
-    ArticleComponent
+    ArticleComponent,
+    ProblemHightDirective,SolutionHightDirective
   ],
 })
 export class ContentAndAsideModule { }

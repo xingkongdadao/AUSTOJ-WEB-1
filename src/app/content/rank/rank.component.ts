@@ -36,24 +36,30 @@ export class RankComponent implements OnInit {
    * 拿到当前页的排名用户
    */
   getRankUsers(){
-    if (this.totalUserRanks && this.totalUserRanks.length > 0){
-      this.startId = (this.currentPage -1 ) * this.pageSize + 1;
-      this.userRanks = this.totalUserRanks.slice(this.startId,this.startId+this.pageSize);
-    }
+    this.userRanks = null;
+    window.setTimeout(() => {
+      if (this.totalUserRanks && this.totalUserRanks.length > 0){
+        this.startId = (this.currentPage -1 ) * this.pageSize + 1;
+        this.userRanks = this.totalUserRanks.slice(this.startId,this.startId+this.pageSize);
+      }
+    },500)
   }
 
   /**
    * 得到全部排名用户
    */
   getTotalRankUsers(){
-    this.userService.fetchRankUsers()
-      .then(x => {
-        if (x.status == 0) {
-          this.totalUserRanks = x.data as UserRankModel[];
-          this.userRanks = this.totalUserRanks.slice(0,this.pageSize);
-          this.totalItems = this.totalUserRanks.length;
-        }
-      })
+    this.userRanks = null;
+    window.setTimeout(() => {
+      this.userService.fetchRankUsers()
+        .then(x => {
+          if (x.status == 0) {
+            this.totalUserRanks = x.data as UserRankModel[];
+            this.userRanks = this.totalUserRanks.slice(0,this.pageSize);
+            this.totalItems = this.totalUserRanks.length;
+          }
+        })
+    },500);
   }
 
 }

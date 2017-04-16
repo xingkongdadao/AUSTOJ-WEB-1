@@ -12,6 +12,7 @@ export class SubmitModel {
   language: string;
   contestId: number;
   verdict: string;
+  verdictCode: number;
   testcase: number;
   createdate: string;
 }

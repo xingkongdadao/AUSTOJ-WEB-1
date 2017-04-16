@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ArticleModel} from "../../model/article-model";
 import {ArticleService} from "../../service/article.service";
 import {LogService} from "../../service/log.service";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-article-list',
@@ -21,45 +22,50 @@ export class ArticleListComponent implements OnInit {
   pageSize: number = 5;
 
 
-  constructor(
-    private articleService: ArticleService
-  ) { }
+  constructor(private articleService: ArticleService,
+              private route: ActivatedRoute) {
+  }
 
 
-  doSearch(){
+  ngOnInit() {
+    this.route.queryParamMap.subscribe(x => {
+      LogService.debug("x:" + x.get('search'));
+      this.currentSearch = x.get('search');
+      this.getArticles();
+    });
+  }
+
+  doSearch() {
     this.getArticles();
   }
 
 
-  doTagSearch(tas: string){
-    LogService.debug(tas)
+  doTagSearch(tas: string) {
+    LogService.debug(tas);
     this.currentSearch = tas;
     this.getArticles();
     return false;
   }
+
   /**
    * 页面变化监控
    * @param $event
    */
-  pageChanged($event){
+  pageChanged($event) {
     this.currentPage = $event.page;
     this.getArticles();
   }
 
-  ngOnInit() {
-    this.getArticles();
-  }
 
-  getArticles(){
-    this.articleService.getArticles(this.currentSearch,this.currentPage,this.pageSize)
+  getArticles() {
+    this.articleService.getArticles(this.currentSearch, this.currentPage, this.pageSize)
       .then(x => {
-        if (x.status == 0){
+        if (x.status == 0) {
           this.articleModels = x.data.contents as ArticleModel[];
           this.totalItems = x.data.total;
         }
       })
   }
-
 
 
 }

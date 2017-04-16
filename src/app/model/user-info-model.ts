@@ -12,5 +12,7 @@ export class UserInfoModel {
   aCProblems: number[];
   //用户最近解题
   aCRecents: number[];
+  aCTotal: number;
+  rank: number;
 
 }

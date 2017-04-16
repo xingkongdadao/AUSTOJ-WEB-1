@@ -1,7 +1,6 @@
 <aside>
   <h5><span>标签</span></h5>
   <div class="tagcloud clearfix tags">
-    <!--todo 标签链接-->
-    <a href="#" *ngFor="let item of tags">{{item.tag}}</a>
+    <a *ngFor="let item of tags" routerLink="/aust/article" [queryParams]="{search:item.tag}">{{item.tag}}</a>
   </div>
 </aside>

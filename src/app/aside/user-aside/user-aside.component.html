@@ -10,9 +10,21 @@
       <a href="/user/1">
         <img [src]="currentUser.avatar" tooltip="change your avatar" placement="bottom" container="body">
       </a>
-      <a href="/user/1" class="center-block user-name" >{{currentUser.nickname}}</a>
+      <a class="center-block user-name" >{{currentUser.nickname}}</a>
     </div>
-    <p>格言:<br><span>{{currentUser.motto}}</span></p>
+    <!--<p>格言:<br><span> {{currentUser.motto}}</span></p>-->
+    <table class="my-record">
+      <tr>
+        <th width="33%">AC</th>
+        <th width="33%">RANK</th>
+        <th width="33%">RECORD</th>
+      </tr>
+      <tr>
+        <td width="33%">{{currentUser.aCTotal}}</td>
+        <td width="33%">{{currentUser.rank}}</td>
+        <td width="33%"><a routerLink="/aust/submit">提交记录</a></td>
+      </tr>
+    </table>
     <p class="tagcloud" *ngIf="currentUser.aCRecents" >近期AC:<br>
       <a style="font-size: 12px;" *ngFor="let item of currentUser.aCRecents" routerLink="/aust/problem/{{item}}">{{item}}</a>
     </p>

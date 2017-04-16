@@ -24,6 +24,7 @@ import {ArticleService} from "./service/article.service";
 import {ProblemService} from "./service/problem.service";
 import {SubmitService} from "./service/submit.service";
 import {ContestService} from "./service/contest.service";
+import { SolutionHightDirective } from './directive/solution-hight.directive';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {ContestService} from "./service/contest.service";
     LoginComponent,
     RegisterComponent,
     EmailCheckComponent,
-    ErrorComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
