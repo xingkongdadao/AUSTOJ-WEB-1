@@ -7,6 +7,7 @@
 .tips .tips-bg {
   position: relative;
   padding: 5px;
+  margin-top: -10px;
 }
 
 .tips .tips-bulls {
@@ -65,7 +66,8 @@
 }
 
 .container-css {
-  height: 22px;
+  height: 23px;
   -webkit-animation: marquee 10.5s linear infinite;/* 2.5s(2s + 0.5s) * 3 => 7.5s */
   animation: marquee 10.5s linear infinite;
+  margin-top: 7px;
 }

@@ -6,8 +6,7 @@
   </p>
   <div *ngIf="currentUser">
     <div class="text-center person">
-      <!--todo 用户个人中心-->
-      <a href="/user/1">
+      <a routerLink="/aust/user">
         <img [src]="currentUser.avatar" tooltip="change your avatar" placement="bottom" container="body">
       </a>
       <a class="center-block user-name" >{{currentUser.nickname}}</a>

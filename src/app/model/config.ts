@@ -3,8 +3,9 @@
  */
 export class Config {
 
-  // static baseUrl: string = 'http://oj.mrdear.cn';
-  static baseUrl: string = 'http://oj.mrdear.cn/api';
+  // static baseUrl: string = 'http://oj.mrdear.cn/api';
+  static baseUrl: string = 'http://localhost:8888/api';
+  static baseImageUrl: string = 'http://localhost:8888';
   /**
    * 获取首页展示用户
    * @type {string}
@@ -40,6 +41,16 @@ export class Config {
    * @type {string}
    */
   static url_userInfo: string = Config.baseUrl+'/user/';
+  /**
+   * 更改用户密码
+   * @type {string}
+   */
+  static url_user_changepwd: string = Config.baseUrl+'/user/changePwd';
+  /**
+   * 更新用户
+   * @type {string}
+   */
+  static url_user_update: string = Config.baseUrl+'/user/update';
   /**
    * 获取网站通知
    * @type {string}
@@ -110,5 +121,16 @@ export class Config {
    * @type {string}
    */
   static url_email_check: string = Config.baseUrl+'/register/check/token';
+  /**
+   * 发送邮箱验证码
+   * @type {string}
+   */
+  static url_email_code: string = Config.baseUrl+'/email/send';
+  /**
+   * 文件上传
+   * @type {string}
+   */
+  static url_upload_img: string = Config.baseUrl+'/user/upload/avatar';
+
 
 }

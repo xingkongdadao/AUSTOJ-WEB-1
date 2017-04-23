@@ -25,7 +25,7 @@ export const appRoutes: Routes = [
     component:RegisterComponent
   },
   {
-    path:'email',
+    path:'register/check/token',
     component:EmailCheckComponent
   },
   {

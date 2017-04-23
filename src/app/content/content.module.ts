@@ -9,7 +9,7 @@ import {CatelogAsideComponent} from "../aside/catelog-aside/catelog-aside.compon
 import {UserAsideComponent} from "../aside/user-aside/user-aside.component";
 import {ContentAndAsideComponent} from "./content.component";
 import {ProblemTableComponent} from "./problem-table/problem.table.component";
-import {ModalModule, PaginationModule, TooltipModule} from "ng2-bootstrap";
+import {ModalModule, PaginationModule, TabsModule, TooltipModule} from "ng2-bootstrap";
 import {FormsModule} from "@angular/forms";
 import { ContestComponent } from './contest/contest.component';
 import { RankComponent } from './rank/rank.component';
@@ -21,6 +21,8 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleComponent } from './article/article.component';
 import {ProblemHightDirective} from "../directive/problem-hight.directive";
 import {SolutionHightDirective} from "../directive/solution-hight.directive";
+import { DiscussComponent } from './discuss/discuss.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
   imports: [
@@ -29,7 +31,8 @@ import {SolutionHightDirective} from "../directive/solution-hight.directive";
     TooltipModule.forRoot(),
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
-    FormsModule
+    FormsModule,
+    TabsModule.forRoot(),
   ],
   declarations: [
     //该模块的入口,因此一定要包含进来
@@ -41,7 +44,7 @@ import {SolutionHightDirective} from "../directive/solution-hight.directive";
     CatelogProblemComponent,
     ArticleListComponent,
     ArticleComponent,
-    ProblemHightDirective,SolutionHightDirective
+    ProblemHightDirective,SolutionHightDirective, DiscussComponent, UserInfoComponent,
   ],
 })
 export class ContentAndAsideModule { }

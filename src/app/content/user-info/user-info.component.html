@@ -1,0 +1,135 @@
+<div class="tab-container col-md-9 col-md-offset-1" *ngIf="currentUser">
+  <tabset>
+    <tab customClass="tab-item">
+      <template tabHeading>
+        <i class="iconfont icon-shezhi"></i> 基础设置
+      </template>
+      <div class="setting">
+        <table>
+          <thead>
+          <tr>
+            <th class="setting-head responsive-head"></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody class="base">
+          <tr>
+            <td class="top-line">
+              <div class="avatar"><img
+                src="{{currentUser.avatar}}">
+              </div>
+            </td>
+            <td class="top-line">
+              <a class="btn btn-primary" (click)="showUploadFile()">
+                <input  type="file" class="hide" id="uploadAvatar" (change)="uploadAuto($event)">更改头像
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="setting-title">
+              昵称
+            </td>
+            <td><input type="text" placeholder="请输入昵称" [(ngModel)]="currentUser.nickname"></td>
+          </tr>
+          <tr>
+            <td class="setting-title">电子邮件</td>
+            <td class="setted">
+              <div>{{currentUser.email}}</div>
+              <i class="iconfont icon-zhengque" *ngIf="currentUser.isEmail">
+                <span class="text-success" style="font-size: 15px">已验证</span>
+              </i>
+              <a href="javaScript:void(0)" (click)="sendEmail(1)" [ngClass]="{'text-danger': !currentUser.isEmail,'disabled':isSend}"
+                 *ngIf="!currentUser.isEmail">{{countDownTime==60?'验证':countDownTime}}</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="setting-title setting-verticle">常用语言</td>
+            <td>
+              <div class="col-xs-4"><input name="lang" [checked]="currentUser.language==='C'" type="radio" value="C"
+                                           [(ngModel)]="currentUser.language"> <span>C</span></div>
+              <div class="col-xs-4"><input name="lang" [checked]="currentUser.language==='C2'" type="radio" value="C2"
+                                           [(ngModel)]="currentUser.language"> <span>C++</span></div>
+              <div class="col-xs-4"><input name="lang" [checked]="currentUser.language==='Java'" type="radio" value="Java"
+                                           [(ngModel)]="currentUser.language"> <span>JAVA</span></div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-success" (click)="updateUser()">保存</button>
+      </div>
+    </tab>
+    <!--个人资料-->
+    <tab customClass="tab-item">
+      <template tabHeading>
+        <i class="iconfont icon-user"></i> 个人资料
+      </template>
+      <div class="user-info setting">
+        <table>
+          <thead>
+          <tr>
+            <th class="setting-head responsive-head"></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="setting-title">个人简介</td>
+            <td>
+              <textarea placeholder="填写你的个人简介" [(ngModel)]="currentUser.intro">{{currentUser.intro}}</textarea>
+            </td>
+          </tr>
+          <tr>
+            <td class="setting-title">个人网站</td>
+            <td><input type="text" placeholder="http://你的网址" style="width: 100%" [(ngModel)]="currentUser.blog"></td>
+          </tr>
+          <tr>
+            <td class="setting-title">AC列表</td>
+            <td class="ac-list">
+              <a *ngFor="let item of currentUser.aCProblems" routerLink="/aust/problem/{{item}}">{{item}}</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-success" (click)="updateUser()">保存</button>
+      </div>
+    </tab>
+    <!--修改密码-->
+    <tab customClass="tab-item">
+      <template tabHeading>
+        <i class="iconfont icon-icon12"></i> 修改密码
+      </template>
+      <div class="setting user-passwd">
+        <table>
+          <thead>
+          <tr>
+            <th class="setting-head responsive-head"></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="setting-title">发送验证码</td>
+            <td class="setted">
+              <div>{{currentUser.email}}</div>&nbsp;&nbsp;
+              <button class="btn btn-default btn-sm" (click)="sendEmail(2)">{{countDownTime==60?'发送':countDownTime}}</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="setting-title">邮箱验证码</td>
+            <td><input type="text" placeholder="请输入邮箱验证码" [(ngModel)]="vcode"></td>
+          </tr>
+          <tr>
+            <td class="setting-title">新密码</td>
+            <td><input type="password" placeholder="新密码" [(ngModel)]="password"></td>
+          </tr>
+          <tr>
+            <td class="setting-title">确认密码</td>
+            <td><input type="password" placeholder="确认密码" [(ngModel)]="confirmPassword"></td>
+          </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-success" (click)="modifyPWD()">保存</button>
+      </div>
+    </tab>
+  </tabset>
+</div>

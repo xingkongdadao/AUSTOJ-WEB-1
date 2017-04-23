@@ -10,6 +10,7 @@ import {ContestTableComponent} from "./contest-table/contest-table.component";
 import {CatelogProblemComponent} from "./catelog-problem/catelog-problem.component";
 import {ArticleListComponent} from "./article-list/article-list.component";
 import {ArticleComponent} from "./article/article.component";
+import {UserInfoComponent} from "./user-info/user-info.component";
 
 export const childRouter : Routes = [
   {
@@ -23,6 +24,7 @@ export const childRouter : Routes = [
       {path:'rank',component:RankComponent},
       {path:'article',component:ArticleListComponent},
       {path:'submit',component:SubmitTableComponent},
+      {path:'user',component:UserInfoComponent},
       {path:'problem/:id',component:ProblemComponent},
       {path:'contest',component:ContestComponent},
       {path:'contest/:id',component:ContestTableComponent},

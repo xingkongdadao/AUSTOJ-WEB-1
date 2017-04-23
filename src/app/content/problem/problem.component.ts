@@ -35,14 +35,14 @@ export class ProblemComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.route.params
       .switchMap((params: Params) => {
         return this.problemService.getProblem(params['id'])
       })
       .subscribe(x => {
         LogService.debug('ProblemComponent'+x);
-        if (x.status == 0){
+        this.problem = null;
+        if (LogService.filterJson(x,this.toastr)){
           this.problem = x.data as ProblemModel;
           this.judgeModel.problemId = this.problem.id;
         }

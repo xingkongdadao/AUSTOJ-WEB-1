@@ -35,9 +35,11 @@ a:hover{
 .footer-socials span {
   padding: 5px 5px;
 }
-
+.footer-qrcode{
+  margin-top: -15px;
+}
 .backtop {
-  margin-top: 5px;
+  margin-top: -15px;
 }
 
 .qrcode{
@@ -47,5 +49,11 @@ a:hover{
   bottom: 10px;
   left: -70px;
   margin-left: -10px;
+}
+.iconfont:hover{
+  opacity: 1;
+}
+.iconfont{
+  opacity: .6;
 }
 

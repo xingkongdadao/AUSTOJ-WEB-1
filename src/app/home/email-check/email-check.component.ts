@@ -1,8 +1,9 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ToastsManager} from "ng2-toastr";
-import {Http} from "@angular/http";
+import {Http, URLSearchParams} from "@angular/http";
 import {Config} from "../../model/config";
+import {LogService} from "../../service/log.service";
 
 @Component({
   selector: 'app-email-check',
@@ -22,14 +23,17 @@ export class EmailCheckComponent implements OnInit {
     private http: Http
   ) {
     this.toastr.setRootViewContainerRef(vr);
-    this.emailToken = route.snapshot.queryParamMap.get("token")
+    this.emailToken = route.snapshot.queryParamMap.get("token");
     if (!this.emailToken){
       this.toastr.error("验证失败,token不存在");
     }
   }
 
   ngOnInit() {
-    this.http.get(Config.url_email_check).toPromise()
+    let params = new URLSearchParams();
+    params.set("token",this.emailToken);
+    LogService.debug("token is :"+this.emailToken);
+    this.http.get(Config.url_email_check,{params:params}).toPromise()
       .then(response => response.json())
       .then(x => {
         if (x.status == 0){
@@ -40,6 +44,7 @@ export class EmailCheckComponent implements OnInit {
           },2000)
         }else {
           this.toastr.error(x.msg);
+          this.checkMsg = x.msg;
         }
       })
   }

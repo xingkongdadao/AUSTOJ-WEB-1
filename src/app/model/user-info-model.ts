@@ -6,7 +6,9 @@ export class UserInfoModel {
   nickname: string;
   avatar: string;
   email: string;
-  motto: string;
+  isEmail:boolean;
+  intro: string;
+  blog:string;
   language: string;
   //用户历史解题
   aCProblems: number[];

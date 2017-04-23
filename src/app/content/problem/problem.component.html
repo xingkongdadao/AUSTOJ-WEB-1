@@ -51,13 +51,13 @@
             <div class="form-group">
               <label class="radio-inline">选择编译器:</label>
               <label class="radio-inline">
-                <input type="radio" name="lang" value="C" [(ngModel)]="judgeModel.lang"> C
+                <input type="radio" name="lang" value="C" [checked]="currentUser.language==='C'" [(ngModel)]="judgeModel.lang"> C
               </label>
               <label class="radio-inline">
-                <input type="radio" name="lang" value="C++" [(ngModel)]="judgeModel.lang"> C++
+                <input type="radio" name="lang" value="C2" [checked]="currentUser.language==='C2'" [(ngModel)]="judgeModel.lang"> C++
               </label>
               <label class="radio-inline">
-                <input type="radio" name="lang" value="Java" [(ngModel)]="judgeModel.lang"> Java
+                <input type="radio" name="lang" value="Java" [checked]="currentUser.language==='Java'" [(ngModel)]="judgeModel.lang"> Java
               </label>
             </div>
             <div class="form-group">

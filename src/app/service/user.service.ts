@@ -60,8 +60,12 @@ export class UserService implements OnInit{
             let tempUser = x.data as UserInfoModel;
             CookieService.addCookie("currentUser",JSON.stringify(tempUser));
             this.subject.next(tempUser);
+          }else {
+            CookieService.addCookie("currentUser",'',-100);
           }
-        });
+        }).catch(()=>{
+        CookieService.addCookie("currentUser",'',-100);
+      });
     }
   }
 
@@ -139,6 +143,53 @@ export class UserService implements OnInit{
     params.set('email',email);
     LogService.debug('checkRepeatEmail params:'+params);
     return this.http.get(Config.url_checkEmail,{params:params}).toPromise()
+      .then(response => response.json())
+      .catch(LogService.handleError);
+  }
+
+  /**
+   * 发送短信验证码
+   */
+  sendEmailCode(type: number, email: string): Promise<any>{
+    let params = new URLSearchParams();
+    params.set('type',type.toString());
+    params.set('email',email);
+    return this.http.get(Config.url_email_code,{params:params}).toPromise()
+      .then(response => response.json())
+      .catch(LogService.handleError);
+  }
+
+  /**
+   * 更改密码
+   */
+  changePasswd(code: string, passwd: string): Promise<any>{
+    let params = new URLSearchParams();
+    params.set('code',code);
+    params.set('passwd',passwd);
+    return this.http.post(Config.url_user_changepwd,params).toPromise()
+      .then(response => response.json())
+      .catch(LogService.handleError);
+  }
+  /**
+   * 更新用户
+   */
+  updateUser(userInfo: UserInfoModel): Promise<any>{
+    let params = new URLSearchParams();
+    params.set('id',userInfo.id.toString());
+    params.set('nickname',userInfo.nickname);
+    params.set('avatar',userInfo.avatar);
+    params.set('lang',userInfo.language);
+    params.set('intro',userInfo.intro);
+    params.set('blog',userInfo.blog);
+    return this.http.post(Config.url_user_update,params).toPromise()
+      .then(response => response.json())
+      .catch(LogService.handleError);
+  }
+
+  uploadAvatar(file: any): Promise<any>{
+    let formData:FormData = new FormData();
+    formData.append('avatar',file);
+    return this.http.post(Config.url_upload_img,formData).toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
   }
