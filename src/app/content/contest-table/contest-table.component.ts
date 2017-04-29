@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ContestModel} from "../../model/contest-model";
-import {ProblemTableModel} from "../../model/problem-table-model";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ToastsManager} from "ng2-toastr";
 import {ContestService} from "../../service/contest.service";
 import {LogService} from "../../service/log.service";
+import {ContestProblemModel} from "../../model/contest-problem-model";
 
 @Component({
   selector: 'app-contest-table',
@@ -15,7 +15,7 @@ export class ContestTableComponent implements OnInit {
 
   contest: ContestModel;
 
-  problems: ProblemTableModel[];
+  problems: ContestProblemModel[];
 
   constructor( private route: ActivatedRoute,
                private router: Router,
@@ -33,7 +33,7 @@ export class ContestTableComponent implements OnInit {
       .subscribe(x => {
         LogService.debug("ContestTableComponent"+x);
         if (LogService.filterJson(x,this.toastr)){
-          this.problems = x.data.contents as ProblemTableModel[];
+          this.problems = x.data.contents as ContestProblemModel[];
           this.contest = x.data as ContestModel;
         }
       });

@@ -6,5 +6,6 @@ export class JudgeModel {
   source: string;
   lang: string;
   problemId: number;
+  contestid: number;
 
 }

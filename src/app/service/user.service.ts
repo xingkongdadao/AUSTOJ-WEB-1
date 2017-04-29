@@ -106,7 +106,7 @@ export class UserService implements OnInit{
     let urlParams = new URLSearchParams();
     urlParams.set('email',userinfo.email);
     urlParams.set('password',userinfo.Password);
-    urlParams.set('nickname',userinfo.nickName);
+    urlParams.set('authorName',userinfo.nickName);
     urlParams.set('codevalidate',userinfo.vcode);
     return this.http.post(Config.url_register,urlParams).toPromise()
       .then(response => response.json())

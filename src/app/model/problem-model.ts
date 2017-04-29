@@ -12,6 +12,6 @@ export class ProblemModel {
   sampleInput: string;
   sampleOutput: string;
   hit: string;
-  nickname: string;
-  contestId: number;
+  authorName: string;
+  type: number;
 }

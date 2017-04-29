@@ -32,12 +32,19 @@ export class ProblemComponent implements OnInit {
   ) {
     this.currentUser = this.userService.currentUser();
     this.toastr.setRootViewContainerRef(vr);
+    this.judgeModel.lang = this.currentUser.language;
   }
 
   ngOnInit() {
+    //获取竞赛id
+    this.route.queryParamMap
+      .subscribe(x => {
+        this.judgeModel.contestid = Number.parseInt(x.get('contest_id'));
+      });
+
     this.route.params
       .switchMap((params: Params) => {
-        return this.problemService.getProblem(params['id'])
+        return this.problemService.getProblem(params['id'],this.judgeModel.contestid)
       })
       .subscribe(x => {
         LogService.debug('ProblemComponent'+x);

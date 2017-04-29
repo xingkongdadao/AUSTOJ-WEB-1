@@ -29,6 +29,9 @@ export class SubmitService {
     let params = new URLSearchParams();
     params.set('code',window.btoa(judgeModel.source));
     params.set('lang',judgeModel.lang);
+    if (judgeModel.contestid) {
+      params.set('contest_id',judgeModel.contestid.toString());
+    }
     return this.http.post(Config.url_judge_submit+judgeModel.problemId,params).toPromise()
             .then(response => response.json())
             .catch(LogService.handleError);

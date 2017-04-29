@@ -9,8 +9,6 @@
       <tr>
         <th class="col-xs-1" align="center">ID</th>
         <th class="col-xs-5">题目标题</th>
-        <th class="col-xs-3">涉及知识点</th>
-        <th class="col-xs-1" align="center">难度</th>
         <th class="col-xs-2" align="center">AC/Submit</th>
       </tr>
     </thead>
@@ -22,12 +20,10 @@
         <td colspan="100%">无更多的数据......</td>
       </tr>
       <tr *ngFor="let item of problems">
-        <td class="col-xs-1">{{item.id}}</td>
+        <td class="col-xs-1">{{item.num}}</td>
         <td class="col-xs-5">
-          <a routerLink="/aust/problem/{{item.id}}">{{item.title}}</a>
+          <a routerLink="/aust/problem/{{item.problemId}}" [queryParams]="{contest_id: contest.id}">{{item.problemTitle}}</a>
         </td>
-        <td class="col-xs-3">{{item.keyword}}</td>
-        <td class="col-xs-1">{{item.difficulty}}</td>
         <td class="col-xs-2">{{item.acRate}}</td>
       </tr>
     </tbody>

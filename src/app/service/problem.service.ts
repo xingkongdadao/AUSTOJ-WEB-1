@@ -52,8 +52,12 @@ export class ProblemService {
    * @param id 该题目id
    * @returns {Promise<any>}
    */
-  getProblem(id: number): Promise<any>{
-    return this.http.get(Config.url_problem_id+id).toPromise()
+  getProblem(id: number,contestId: number): Promise<any>{
+    let urlParams = new URLSearchParams();
+    if (contestId) {
+      urlParams.set('contest_id',contestId.toString());
+    }
+    return this.http.get(Config.url_problem_id+id,{params:urlParams}).toPromise()
               .then(response => response.json())
               .catch(LogService.handleError)
   }
