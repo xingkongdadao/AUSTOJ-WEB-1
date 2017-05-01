@@ -30,6 +30,7 @@ export class RegisterComponent implements OnInit {
     this.buildForm();
     this.userInfo.email = window.localStorage.getItem('registerEmail');
     window.localStorage.removeItem('registerEmail');
+    this.changeCode();
   }
 
   /**

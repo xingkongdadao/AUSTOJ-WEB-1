@@ -82,6 +82,11 @@ export class Config {
    */
   static url_articles_detail: string = Config.baseUrl+'/article/';
   /**
+   * 文章点赞
+   * @type {string}
+   */
+  static url_articles_vote: string = Config.baseUrl+'/article/vote/';
+  /**
    * 获取某一阶段的题目
    * @type {string}
    */

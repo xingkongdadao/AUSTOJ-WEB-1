@@ -41,6 +41,15 @@ export class ArticleService {
       .catch(LogService.handleError)
   }
 
+  /**
+   * 点赞文章
+   * @param articleId 文章id
+   */
+  likeArtile(articleId: number){
+    return this.http.post(Config.url_articles_vote+articleId,null).toPromise()
+      .then(response => response.json())
+      .catch(LogService.handleError)
+  }
 
 
 }

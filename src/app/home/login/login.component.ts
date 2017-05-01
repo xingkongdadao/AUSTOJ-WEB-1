@@ -6,6 +6,7 @@ import {Config} from "../../model/config";
 import {Toast, ToastsManager} from "ng2-toastr";
 import {Router} from "@angular/router";
 import {LogService} from "../../service/log.service";
+import {CookieService} from "../../service/cookie-service.service";
 
 @Component({
   selector: 'app-login',
@@ -19,22 +20,32 @@ export class LoginComponent implements OnInit {
   codeImgUrl: string = Config.url_codeImage;
   postError: string;
 
+  refer: string = '';
+
   constructor(private userService: UserService,
               private router: Router,
               private fb: FormBuilder,
               private toastr: ToastsManager,
               private vr: ViewContainerRef) {
-    toastr.setRootViewContainerRef(vr)
+    toastr.setRootViewContainerRef(vr);
+    this.userInfo.email = CookieService.getCookie('loginEmail');
   }
 
   ngOnInit() {
     this.buildForm();
+    this.changeCode();
+    this.refer = window.document.referrer;
+    LogService.debug("refer: "+ this.refer);
   }
 
   doLogin(){
     if (this.userForm.valid){
       this.userInfo = this.userForm.value;
-      this.userService.login(this.userInfo)
+      //记住用户名
+      if (this.userInfo.remberMe) {
+        CookieService.addCookie("loginEmail",this.userInfo.email,168);
+      }
+      this.userService.login(this.userInfo,this.refer)
         .then(x => {
           if (x.status == 0){
             this.postError = '';
@@ -42,8 +53,7 @@ export class LoginComponent implements OnInit {
               .then((toast: Toast) => {
                 setTimeout(() => {
                   this.toastr.dismissToast(toast);
-                  //todo 这里需要导航到上一个页面
-                  this.router.navigateByUrl('/')
+                  this.router.navigateByUrl(x.data.refer);
                 }, 3000)
               });
             //刷新当前用户信息

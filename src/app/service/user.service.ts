@@ -86,12 +86,13 @@ export class UserService implements OnInit{
    * @param userinfo 用户模型
    * @returns {Promise<any>}
    */
-  login(userinfo: UserModel): Promise<any>{
+  login(userinfo: UserModel,refer: string): Promise<any>{
     LogService.debug("user Login"+userinfo);
     let urlParams = new URLSearchParams();
     urlParams.set('email',userinfo.email);
     urlParams.set('password',userinfo.Password);
     urlParams.set('codevalidate',userinfo.vcode);
+    urlParams.set('refer',refer);
     return this.http.post(Config.url_login,urlParams).toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
