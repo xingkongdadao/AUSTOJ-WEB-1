@@ -5,7 +5,7 @@ export class Config {
 
   // static baseUrl: string = 'http://oj.mrdear.cn/api';
   static baseUrl: string = 'http://localhost:8888/api';
-  static baseImageUrl: string = 'http://localhost:8888';
+  static baseImageUrl: string = 'http://localhost:8888/';
   /**
    * 获取首页展示用户
    * @type {string}
@@ -106,6 +106,11 @@ export class Config {
    * @type {string}
    */
   static url_judge_list: string = Config.baseUrl+'/judge/list';
+  /**
+   * 得到单个判题结果
+   * @type {string}
+   */
+  static url_judge_one: string = Config.baseUrl+'/judge/';
   /**
    * 提交判题
    * @type {string}

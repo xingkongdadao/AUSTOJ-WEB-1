@@ -22,13 +22,25 @@ export class SubmitService {
   }
 
   /**
+   * 得到单个判题
+   * @param solutionId
+   */
+  getSubmitOne(solutionId: number): Promise<any> {
+    return this.http.get(Config.url_judge_one+solutionId).toPromise()
+      .then(response => response.json())
+      .catch(LogService.handleError)
+  }
+
+
+  /**
    * 提交判题
    * @param judgeModel 判题实体
    */
   judgeSubmit(judgeModel: JudgeModel){
     let params = new URLSearchParams();
-    params.set('code',window.btoa(judgeModel.source));
+    params.set('code',encodeURIComponent(judgeModel.source));
     params.set('lang',judgeModel.lang);
+    LogService.debug(params);
     if (judgeModel.contestid) {
       params.set('contest_id',judgeModel.contestid.toString());
     }

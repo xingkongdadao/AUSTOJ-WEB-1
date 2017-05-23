@@ -69,7 +69,7 @@ export class ProblemComponent implements OnInit {
     this.submitService.judgeSubmit(this.judgeModel)
       .then(x => {
         if (LogService.filterJson(x,this.toastr)){
-          window.localStorage.setItem("freshCount","5");
+          window.localStorage.setItem("solutionId",x.data);
           this.router.navigateByUrl("/aust/submit");
         }
       });

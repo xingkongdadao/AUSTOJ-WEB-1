@@ -15,12 +15,12 @@ export class SubmitTableComponent implements OnInit {
 
   //当前用户
   currentUser: UserInfoModel;
-  submits: SubmitModel[];
+  submits: Array<SubmitModel>;
   total: number = 0;
   pageSize: number = 20;
   currentPage: number = 1;
 
-  freshCount: string;
+  solutionId: string;
 
   constructor(
     private submitService: SubmitService,
@@ -30,23 +30,16 @@ export class SubmitTableComponent implements OnInit {
   ) {
     this.toastr.setRootViewContainerRef(vr);
     this.currentUser = this.userService.currentUser();
-    this.freshCount = window.localStorage.getItem("freshCount");
-    window.localStorage.removeItem("freshCount")
+    this.solutionId = window.localStorage.getItem("solutionId");
+    window.localStorage.removeItem("solutionId")
   }
 
   ngOnInit() {
     this.getSubmits();
-    if (this.freshCount){
-      let count = Number.parseInt(this.freshCount);
-      this.freshCount = '0';
-      while(count-- > 1){
-        window.setTimeout(()=>{
-          this.getSubmits();
-          if (count == 1){
-            this.userService.freshCurrentUser(this.currentUser.id,true);
-          }
-        },count* 5000)
-      }
+    if (this.solutionId){
+      let count = Number.parseInt(this.solutionId);
+      this.solutionId = '0';
+      this.getSubmitOne(count,1000);
     }
   }
 
@@ -61,10 +54,32 @@ export class SubmitTableComponent implements OnInit {
           if (LogService.filterJson(x,this.toastr)){
             this.submits = null;
             this.total = x.data.total;
-            this.submits = x.data.contents as SubmitModel[]
+            this.submits = x.data.contents as Array<SubmitModel>
           }
         })
     },500)
+  }
+
+  /**
+   * 得到单个提交
+   */
+  getSubmitOne(solutionId: number,timeout: number){
+    window.setTimeout(() => {
+      this.submitService.getSubmitOne(solutionId)
+        .then(x => {
+          if (LogService.filterJson(x,this.toastr)){
+            let topSubmit:SubmitModel = x.data as SubmitModel;
+            //如果正在编译则3秒后再次请求
+            if (topSubmit.verdictCode === 1){
+              window.setTimeout(() => this.getSubmitOne(solutionId,3000),1);
+            }
+            this.submits[0].verdictCode = topSubmit.verdictCode;
+            this.submits[0].verdict = topSubmit.verdict;
+            this.submits[0].memory = topSubmit.memory;
+            this.submits[0].time = topSubmit.time;
+          }
+        })
+    },timeout)
   }
 
   /**
@@ -72,8 +87,10 @@ export class SubmitTableComponent implements OnInit {
    * @param $event
    */
   pageChanged($event){
-    this.currentPage = $event.page;
-    this.getSubmits();
+    if (this.currentPage != $event.page){
+      this.currentPage = $event.page;
+      this.getSubmits();
+    }
   }
 
 
